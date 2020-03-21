@@ -2,9 +2,16 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://colin-jay.cn/photography/index.html</loc>
+    
+    <lastmod>2020-03-21T15:21:33.586Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://colin-jay.cn/2020/02/15/PAT-AdvancedLevel1002/</loc>
     
-    <lastmod>2020-03-21T09:59:31.509Z</lastmod>
+    <lastmod>2020-03-21T13:47:25.927Z</lastmod>
     
   </url>
   
@@ -51,13 +58,6 @@
   </url>
   
   <url>
-    <loc>https://colin-jay.cn/categories/index.html</loc>
-    
-    <lastmod>2020-03-20T13:38:10.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>https://colin-jay.cn/archive/index.html</loc>
     
     <lastmod>2020-03-20T13:38:10.000Z</lastmod>
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://colin-jay.cn/photography/index.html</loc>
+    <loc>https://colin-jay.cn/categories/index.html</loc>
     
     <lastmod>2020-03-20T13:38:10.000Z</lastmod>
     

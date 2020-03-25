@@ -263,7 +263,10 @@
 
 
     <!-- Main Content -->
-    <!-- Post Content -->
+    
+
+
+<!-- Post Content -->
 <article>
     <div class="container">
         <div class="row">
@@ -420,7 +423,7 @@
                 
                 <hr>
                 <div id="blog_comments"></div>
-
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
 <!--
 <link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
 <script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
@@ -467,7 +470,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Fri Jan 17 2020 23:12:57 GMT+0800', // optional
+    id: md5("https://colin-jay.cn/2020/01/17/SummaryAndRecords/index.html"), // optional
     owner: "Colin-Jay",
     repo: "BlogsComment",
     oauth: {

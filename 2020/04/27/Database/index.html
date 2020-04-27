@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Colin-Jay&#39;s Blogs">
+    <meta name="keyword"  content="Colin-Jay, Blogs">
+    <link rel="shortcut icon" href="/img/tortoise_cartoon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          数据库系统概论笔记 - Colin-Jay&#39;s Blogs
+        
+    </title>
+
+    <link rel="canonical" href="https://Colin-Jay.cn/2020/04/27/Database/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/Note.jpg')
+                /*post*/
+            
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/Just-do-it-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#note" title="note">note</a>
+                            
+                        </div>
+                        <h1>数据库系统概论笔记</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Colin-Jay on
+                            2020-04-27
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">5.7k</span> and
+                                Reading Time <span class="post-count">19</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Colin Jay</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/photography/">Photography</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://me.csdn.net/qq_42007035" target="_blank">CSDN</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="数据库系统概论"><a href="#数据库系统概论" class="headerlink" title="数据库系统概论"></a>数据库系统概论</h1><h2 id="绪论"><a href="#绪论" class="headerlink" title="绪论"></a>绪论</h2><p><strong>数据库DB</strong></p>
+<p>数据库是长期储存在计算机内、有组织的、可共享的大量数据的集合。</p>
+<p><strong>数据库管理系统DBMS</strong></p>
+<p>数据库管理系统是位于用户与操作系统之间的一层数据管理软件（计算机的基础软件）</p>
+<p>（1）数据定义功能</p>
+<p>（2）数据组织、存储和管理</p>
+<p>（3）数据操纵功能</p>
+<p>（4）数据库的事务管理和运行管理</p>
+<p>（5）数据库的建立和维护功能</p>
+<p>（6）其他功能</p>
+<p><strong>数据库系统</strong></p>
+<p>数据库系统是由数据库、数据库管理系统（及其应用开发工具）、应用程序和数据库管理员（DBA）组成的存储、管理、处理和维护数据的系统。</p>
+<p><strong>数据库系统的特点</strong></p>
+<p>（1）数据结构化</p>
+<p>数据库系统实现整体数据的结构化，这是数据库系统的主要特征之一，也是数据库系统与文件系统的本质区别。</p>
+<p>（2）数据独立性高</p>
+<p>数据独立性是由数据库管理系统提供的二级映像功能来保证的。</p>
+<p>a.物理独立性是指用户的应用程序与数据库中数据的物理存储是相互独立的。</p>
+<p>b.逻辑独立性是指用户的应用程序与数据库的逻辑结构是相互独立的。</p>
+<p><strong>概念模型</strong></p>
+<p>（1）信息世界中的基本概念</p>
+<p>a.实体</p>
+<p>b.属性</p>
+<p>c.码</p>
+<p>d.实体型</p>
+<p>e.实体集</p>
+<p>f.联系</p>
+<p>（2）概念模型的一种表示方法：实体-联系方法（E-R方法/E-R模型）</p>
+<p><strong>数据库系统的三级模式结构</strong></p>
+<p>（1）模式</p>
+<p>模式也称逻辑模式，是数据库中全体数据的逻辑结构和特征的描述，是所有用户的公共数据视图。</p>
+<p>一个数据库只有一个模式。</p>
+<p>（2）外模式</p>
+<p>外模式也称子模式或用户模式，它是数据库用户能够看见和使用的局部数据的逻辑结构和特征的描述，是数据库用户的数据视图，是与某一应用有关的数据的逻辑表示。</p>
+<p>（3）内模式</p>
+<p>内模式也称存储模式，一个数据库只有一个内模式。它是数据物理结构的存储方式的描述，是数据在数据库内部的组织方式。</p>
+<p><strong>数据库系统的二级映像功能与数据独立性</strong></p>
+<p>（1）外模式/模式映像</p>
+<p>当模式改变时，由数据库管理员对各个外模式/模式的映像作相应改变，可以使模式保持不变，从而应用程序也不必改变。保证了数据与程序的逻辑独立性，简称数据的逻辑独立性。</p>
+<p>（2）模式/内模式映像</p>
+<p>当数据库的存储结构改变时，由数据库管理员对模式/内模式映像作相应改变，可以使模式保持不变，从而应用程序也不必改变。保证了数据与程序的物理独立性，简称数据的物理独立性。</p>
+<h2 id="关系数据库"><a href="#关系数据库" class="headerlink" title="关系数据库"></a>关系数据库</h2><p><strong>关系</strong></p>
+<p>候选码、主码、主属性、非主属性（非码属性）</p>
+<p>基本关系的六条性质：</p>
+<p>（1）列是同质的</p>
+<p>（2）不同列可出自同一个域，每一列为一个属性，不同属性(列)给不同属性名</p>
+<p>（3）列的顺序可任意交换</p>
+<p>（4）任意两个元组不能完全相同</p>
+<p>（5）行的顺序可任意交换</p>
+<p>（6）每一分量是不可分的数据项</p>
+<p>关系模式：关系的描述R(U, D, dom, F)，简记为R(U)或R(A1, A2, …, An)</p>
+<p><strong>关系操作</strong></p>
+<p>查询操作和插入、删除、修改操作两部分</p>
+<p><strong>关系的完整性</strong></p>
+<p>（1）实体完整性</p>
+<p>（2）参照完整性</p>
+<p>（3）用户定义的完整性</p>
+<p><strong>关系代数</strong></p>
+<p>（1）传统的集合运算（前三者都有n个属性且相应属性取自同一个域）</p>
+<p>并（合并）</p>
+<p>差（去除）</p>
+<p>交（共同）</p>
+<p>笛卡尔积（元组连接）</p>
+<p>（2）专门的关系运算</p>
+<p>选择（满足条件的行）</p>
+<p>投影（列的组合）</p>
+<p>连接（元组连接且满足条件θ）</p>
+<p>a.等值连接（条件θ为相等）</p>
+<p>b.自然连接（等值连接去除重复列，默认舍弃悬浮元组）</p>
+<p>除（R÷S，R中公共属性在非公共属性上的象集包含了S中公共属性投影集合，R÷S结果为这些满足条件的非公共属性的元组集合）</p>
+<h2 id="关系数据库标准语言SQL"><a href="#关系数据库标准语言SQL" class="headerlink" title="关系数据库标准语言SQL"></a>关系数据库标准语言SQL</h2><p><strong>数据定义</strong></p>
+<p>对模式SCHEMA、基本表TABLE、视图VIEW、索引INDEX的创建CREATE、删除DROP和修改ALTER（9种组合，不能修改模式、视图和索引）（10种组合，不能修改模式和视图）</p>
+<p><strong>数据查询</strong></p>
+<ul>
+<li>单表查询</li>
+</ul>
+<p>查询所有*</p>
+<p>消除重复行DISTINCT，默认是全部行ALL</p>
+<p>范围闭区间(NOT) BETWEEN AND</p>
+<p>属性值的集合(NOT) IN</p>
+<p> 字符匹配LIKE+通配符（任意长度% 任意单个字符_）（+ 转义符ESCAPE）</p>
+<p>空值IS (NOT) NULL</p>
+<p>按属性列排序ORDER BY + 升序ASC（默认，空值最后）/降序DESC（空值最先）</p>
+<p>元组个数COUNT(*) （遇到空值不影响）</p>
+<p>某列中值的：个数COUNT()，总和SUM()，平均值AVG()，最大值MAX()，最小值MIN() （遇到空值跳过）</p>
+<p>分组GROUP BY （+ HAVING）</p>
+<ul>
+<li>连接查询</li>
+</ul>
+<p>自身连接FIRST,SECOND</p>
+<p>外连接LEFT/RIGHR/FULL OUTER JOIN ON()</p>
+<ul>
+<li>嵌套查询</li>
+</ul>
+<p>子查询结果属性值的集合(NOT) IN</p>
+<p>子查询结果的某个值ANY</p>
+<p>子查询结果的所有值ALL</p>
+<p>返回查询结果(NOT) EXISTS</p>
+<p>多层嵌套</p>
+<p><img src="D:\ColinJay\source\_posts\Database\sjk2.jpg" width="400px" height="600px" ></p>
+<ul>
+<li>集合查询</li>
+</ul>
+<p>查询结果是元组的集合，可以进行集合操作并UNION、交INTERSECT、差EXCEPT</p>
+<ul>
+<li>基于派生表查询</li>
+</ul>
+<p>子查询生成的临时派生表作为主查询的对象，AS设置别名</p>
+<p><strong>数据更新</strong></p>
+<ul>
+<li>插入</li>
+</ul>
+<p>INSERT</p>
+<p>INTO</p>
+<p>VALUES</p>
+<ul>
+<li>修改</li>
+</ul>
+<p>UPDATE</p>
+<p>SET</p>
+<p>WHERE</p>
+<ul>
+<li>删除</li>
+</ul>
+<p>DELETE</p>
+<p>FROM</p>
+<p>WHERE</p>
+<p><strong>空值</strong></p>
+<p>空值与其他值算术运算为空值，比较运算为UNKNOWN</p>
+<p><strong>视图的作用</strong></p>
+<ul>
+<li>视图能够简化用户的操作</li>
+<li>视图使用户能以多种角度看待同一数据</li>
+<li>视图对重构数据库提供了一定程度的逻辑独立性</li>
+<li>视图能够对机密数据提供安全保护</li>
+<li>适当利用视图可以更清晰地表达查询</li>
+</ul>
+<h2 id="数据库安全性"><a href="#数据库安全性" class="headerlink" title="数据库安全性"></a>数据库安全性</h2><p><strong>数据库的安全性</strong></p>
+<p>是指保护数据库以防止不合法使用所造成的数据泄漏、更改或破坏。</p>
+<p><strong>TCSEC/TDI（四组七个等级）</strong></p>
+<p>C1级（自主安全保护）：该级只提供了非常初级的自主安全保护，能实现对用户和数据的分离。进行自主存取控制（DAC），保护或限制用户权限的传播。现有的商业系统往往稍作改进即可满足要求。</p>
+<p>B1级（标记安全保护）：对系统的数据加以标记，并对标记的主体和客体实施强制存取控制（MAC）以及审计等安全机制。B1级别的产品才被认为是真正意义上的安全产品。</p>
+<p><strong>自主存取控制</strong></p>
+<p>用户对于不同的数据库对象有不同的存取权限，不同的用户对同一对象也有不同的权限，而且用户还可将其拥有的存取权限转授给其他用户。</p>
+<p>因此自主存取控制非常灵活。</p>
+<p><strong>强制存取控制</strong></p>
+<p>每一个数据库对象被标记以一定的密级，每一个用户也被授予某一个级别的许可证。对于任意一个对象，只有具有合法许可证的用户才可以存取。</p>
+<p>因此强制存取控制相对比较严格。</p>
+<h2 id="数据库完整性"><a href="#数据库完整性" class="headerlink" title="数据库完整性"></a>数据库完整性</h2><p><strong>（1）实体完整性</strong></p>
+<p>说明方法：在列级定义（只适合单属性构成的码）、在表级定义</p>
+<p>检查：主码值是否唯一、主码的各个属性是否为空</p>
+<p>处理：拒绝插入或修改</p>
+<p><strong>（2）参照完整性</strong></p>
+<p>检查：参照表插入、修改；被参照表删除、修改</p>
+<p>处理：拒绝执行、级联删除、设置为空值</p>
+<p><strong>（3）用户定义的完整性</strong></p>
+<p>a.属性上约束条件</p>
+<p>检查：列值非空、列值唯一、检查列值是否满足一个条件表达式（CHECK短语）</p>
+<p>处理：拒绝执行</p>
+<p>b.元组上的约束条件（不同属性之间的约束条件）</p>
+<p>检查：CHECK语句定义约束条件</p>
+<p>处理：拒绝执行</p>
+<h2 id="关系数据库理论"><a href="#关系数据库理论" class="headerlink" title="关系数据库理论"></a>关系数据库理论</h2><p><strong>函数依赖</strong></p>
+<p>设R(U)是属性集U上的关系模式。X，Y是U的子集。若对于R的任何一个可能的关系r，r中不可能存在两个元组在X属性值上相等而在Y属性值上不等，则称X函数确定Y或Y函数依赖于X，记作：X→Y。</p>
+<p><strong>完全函数依赖</strong></p>
+<p>在R(U)中如果X→Y，并且对X的任何一个真子集X’，都有X’→Y，则称Y对X完全函数依赖，记作：X → Y</p>
+<p><strong>部分函数依赖</strong></p>
+<p>若X → Y，但Y不完全函数依赖于X，则称Y对X部分函数依赖，记作：X → Y</p>
+<p><strong>传递函数依赖</strong></p>
+<p><img src="D:\ColinJay\source\_posts\Database\s4.png" width="1000px" height="50px" /></p>
+<p><strong>候选码</strong></p>
+<p><img src="D:\ColinJay\source\_posts\Database\s5.png" width="1000px" height="50px" /></p>
+<p><strong>主属性</strong></p>
+<p>包含在任何候选码中的属性。</p>
+<p><strong>非主属性（非码属性）</strong></p>
+<p>不包含在任何候选码中的属性。 </p>
+<p><strong>外码</strong></p>
+<p>关系模式R中的属性或属性组X并非R的码，但X是另一个关系模式的码，则称X是R的外部码，简称外码。</p>
+<p><strong>1NF</strong></p>
+<ul>
+<li>每一个分量必须是不可分的数据项</li>
+</ul>
+<p><strong>2NF</strong></p>
+<ul>
+<li>若R∈1NF，对R的每一个非平凡的函数依赖X→Y，要么Y是主属性，要么X不是任何码的真子集，则R∈2NF。</li>
+<li>若R∈1NF，且每一个非主属性完全函数依赖于任何一个候选码，则R∈2NF。</li>
+</ul>
+<p>2NF在1NF基础上消除了非主属性对码的部分函数依赖。</p>
+<p><strong>3NF</strong></p>
+<ul>
+<li>若R∈1NF，对R中的每一个非平凡的函数依赖X→Y，要么Y是主属性，要么X中含有码，则R∈3NF。</li>
+</ul>
+<p>3NF在2NF的基础上消除了非主属性对码的传递函数依赖,不存在非主属性对非主属性的函数依赖。</p>
+<p><strong>BCNF</strong></p>
+<ul>
+<li>若R∈1NF，对R中的每一个非平凡的函数依赖X→Y，X中均含有码，则R∈BCNF。</li>
+</ul>
+<p>不允许主属性对码的部分和传递函数依赖。</p>
+<p><strong>多值依赖</strong></p>
+<p>设有关系模式R(U)，X, Y, Z是U的非空子集。对于R的任一关系r，给定一对(x, z)值，就有一组Y的值与之对应，这组值仅仅决定于x值而与z值无关，则称“Y多值依赖于X”或“X多值决定Y”。记作X→→Y。</p>
+<p><strong>4NF</strong></p>
+<p>若关系模式R（U，F）∈1NF，如果对于R的每个非平凡多值依赖X →→ Y（Y不包含于X），X都含有码，则称R（U，F）∈4NF。</p>
+<p>4NF消除了多值依赖。</p>
+<p><strong>模式分解</strong></p>
+<p>无损连接性和函数依赖</p>
+<p>具有无损连接性：分解后的(几个)小模式可自然连接恢复位原来的模式</p>
+<p>保持函数依赖：分解前后函数依赖集等价</p>
+<p><strong>分解为一组具有无损连接性，保持函数依赖，且满足3NF的关系范式</strong></p>
+<p><img src="D:\ColinJay\source\_posts\Database\sjk1.jpg" width="400px" height="600px" ></p>
+<h2 id="数据库设计"><a href="#数据库设计" class="headerlink" title="数据库设计"></a>数据库设计</h2><p><strong>数据库设计基本步骤</strong></p>
+<p>需求分析</p>
+<p>概念结构设计  构造ER模型</p>
+<p>逻辑结构设计  生成一组关系模式</p>
+<p>物理结构设计  设计具体DBMS下的表、视图、索引</p>
+<p>数据库实施</p>
+<p>数据库运行和维护</p>
+<p><strong>ER方法</strong></p>
+<p>实体、联系以及它们的属性，关系是一对一，一对多还是多对多，是否存在弱实体型。</p>
+<p>如果一个实体型的存在依赖于其他实体型的存在，则这个实体型叫做弱实体型，否则叫做强实体型。一般地讲，如果不能从一个实体型的属性中找出可以作为码的属性，则这个实体型是弱实体型。</p>
+<p><strong>ER模型到关系模型的9步映射算法（前七步）</strong></p>
+<p>S1: 每一强实体用一个新表表示</p>
+<ul>
+<li>对ER模型中的每一实体E创建对应的新表T</li>
+<li>确定新表T的属性：<ol>
+<li>E的所有简单属性转换为对应的表T的属性</li>
+<li>对于E的复合属性，直接从其简单成分转换</li>
+</ol>
+</li>
+<li>确定T的主码和Unique码<ol>
+<li>E的码转换为候选码，选定一个（意义最明显的）为主码，其余作Unique码</li>
+</ol>
+</li>
+</ul>
+<p>S2: 处理ER模型中所有参与1:1标识联系的弱实体W</p>
+<ul>
+<li>找出W所依赖的强实体对应的表T</li>
+<li>在T表中加入W的所有简单属性和复合属性的简单成分</li>
+</ul>
+<p>S3: 处理ER模型中所有参与1:N或M:N标识联系的弱实体W</p>
+<ul>
+<li>为W创建对应的新表T</li>
+<li>确定新表T的属性：<ol>
+<li>E的所有简单属性转换为对应的表T的属性</li>
+<li>对于E的复合属性，直接从其简单成分转换</li>
+</ol>
+</li>
+<li>确定T的主码<ol>
+<li>对于1：N联系，T中增加W所依赖的强实体对应表的主码为外码，T的主码为该外码＋W的鉴别器（部分码）</li>
+<li>如果是M：N联系，构建新列（具有惟一值）为主码</li>
+</ol>
+</li>
+</ul>
+<p>S4: 处理ER模型中每一二元1:1联系R</p>
+<ul>
+<li>确定参与该联系的实体型转换的表S和T</li>
+<li>选定S（最好是全参与的一方，推广到参与程度高的一方）<ol>
+<li>将T的主码作为外码加入S</li>
+</ol>
+</li>
+<li>将联系R的所有简单属性和复合属性成分作为列加入S</li>
+</ul>
+<p>S5: 处理ER模型中每一二元1:N联系R</p>
+<ul>
+<li>确定处于N端的实体表S和1端的实体表T</li>
+<li>将T的主码作为外码加入S</li>
+<li>将R的所有简单属性和复合属性成分作为列加入S</li>
+</ul>
+<p>S6: 处理ER模型中的每一多元联系和二元（M:N联系）R</p>
+<ul>
+<li>为R创建对应的新表T</li>
+<li>将R的所有简单属性和复合属性成分作为列加入T</li>
+<li>将参与联系的（强、弱）实体型的主码作为外码加入T</li>
+<li>将（上步得到的）所有外码组合，共同构成T的主码</li>
+</ul>
+<p>S7: 处理ER模型中的每一多值属性A</p>
+<ul>
+<li>为A创建对应的新表T</li>
+<li>将A的所有简单属性和复合属性成分作为列加入T</li>
+<li>将A所属的实体或联系转换得到的表的主码作为外码加入T</li>
+<li>将（上步得到的）外码和A对应的全部属性确定为T的主码</li>
+</ul>
+<h2 id="关系查询处理和查询优化"><a href="#关系查询处理和查询优化" class="headerlink" title="关系查询处理和查询优化"></a>关系查询处理和查询优化</h2><p>1.选择变串连</p>
+<p>2.尽可能先做选择</p>
+<p>3.尽可能先做投影</p>
+<p>4.同时执行多个选择和投影</p>
+<p>5.分组</p>
+<h2 id="数据库恢复技术"><a href="#数据库恢复技术" class="headerlink" title="数据库恢复技术"></a>数据库恢复技术</h2><p><strong>事务</strong></p>
+<p>事务是用户定义的一个数据库操作序列，这些操作要么全做，要么全不做，是一个不可分割的工作单位。</p>
+<p>事务是恢复和并发控制的基本单位。</p>
+<p>保证事务ACID特性是事务处理的重要任务。</p>
+<p><strong>事务的特性(ACID)</strong></p>
+<ul>
+<li><p>原子性(Atomicity) ：最小工作单位</p>
+</li>
+<li><p>一致性(Consistency)： 一个正确状态到另一个正确状态</p>
+</li>
+<li><p>隔离性(Isolation) ：事务不相互干扰</p>
+</li>
+<li><p>持续性(Durability) ：事务提交对数据库影响是永久性的 </p>
+</li>
+</ul>
+<p><strong>事务ACID特性可能遭到破坏的因素</strong></p>
+<ul>
+<li>多个事务并行运行时，不同事物的操作交叉执行</li>
+<li>事务在运行过程中被强制停止</li>
+</ul>
+<p><strong>数据库恢复</strong></p>
+<p>数据库管理系统必须具有把数据库从错误状态恢复到某一已知的正确状态的功能</p>
+<p>恢复的基本原理：冗余</p>
+<p>建立冗余数据最常用的技术是数据转储和登记日志文件。</p>
+<p><strong>数据转储</strong></p>
+<p>按照状态：动态转储、静态转储</p>
+<p>按照方式：海量转储、增量转储</p>
+<p><strong>登记日志文件</strong></p>
+<p>日志文件的作用</p>
+<ul>
+<li>事务故障恢复和系统恢复必须用日志文件</li>
+<li>在动态转储方式中必须建立日志文件，后备副本和日志文件结合起来才能有效地恢复数据库</li>
+<li>在静态转储方式中也可以建立日志文件，当数据库毁坏后可重新装入后援副本把数据库恢复到转储结束时刻的正确状态，然后利用日志文件把已完成的事务进行重做处理，对故障发生时尚未完成的事务进行撤销处理。这样不必重新运行那些已完成的事务程序就可把数据库恢复到故障前某一时刻的正确状态。</li>
+</ul>
+<p><strong>事务内部的故障</strong></p>
+<p>事务故障是指事务在运行至正常终点前被终止，这时恢复子系统应利用日志文件撤销（UNDO）此事务已对数据库进行的修改。</p>
+<p>事务故障的恢复是由系统自动完成的，对用户是透明的。</p>
+<p>恢复步骤：</p>
+<ul>
+<li><p>反向扫描日志文件，查找未完成事务的更新操作</p>
+</li>
+<li><p>对该事务的更新操作做逆操作</p>
+</li>
+<li><p>继续反向扫描，查找该事务的其他更新操作，并做同样处理</p>
+</li>
+<li><p>直至该事务的开始标记为止</p>
+</li>
+</ul>
+<p><strong>系统故障（软故障）</strong></p>
+<p>系统故障是指造成系统停止运转的任何事件，使得系统要重新启动。</p>
+<p>系统故障的恢复是由系统在重新启动时自动完成的，不需要用户干预。</p>
+<p>系统故障造成数据库不一致状态的原因</p>
+<ul>
+<li>未完成事务对数据库的更新可能已写入数据库</li>
+<li>已提交事务对数据库的更新可能还留在缓冲区没来得及写入数据库</li>
+</ul>
+<p>恢复步骤</p>
+<ul>
+<li>正向扫描日志文件，将已提交事务(故障发生前已COMMIT)标志记入REDO队列，未完成事务，将其事务标志记入UNDO队列</li>
+<li>对UNDO队列中的事务进行UNDO处理</li>
+<li>对REDO队列中的事务进行REDO处理</li>
+</ul>
+<p><strong>介质故障（硬故障）</strong></p>
+<p>介质故障是指外存故障，这类故障将破坏数据库或部分数据库，并影响正在存取这部分数据的所有事务。</p>
+<p>介质故障的恢复需要数据库管理员介入，具体的恢复操作仍由数据库管理系统完成。</p>
+<p>恢复方法</p>
+<p>重装数据库，然后重做已完成的事务</p>
+<p>恢复步骤</p>
+<ul>
+<li>装入最新的数据库后备副本，使数据库恢复到故障发生前最近转储时的一致性状态</li>
+<li>装入日志文件副本，利用日志文件进行REDO。</li>
+</ul>
+<h2 id="并发控制"><a href="#并发控制" class="headerlink" title="并发控制"></a>并发控制</h2><p><strong>并发控制</strong></p>
+<p>DBMS必须提供并发控制机制来协调并发用户的并发操作以保证并发事务的隔离性和一致性</p>
+<p><strong>封锁</strong></p>
+<p>事务T在对某个数据对象例如表、记录等操作之前，先向系统发出加锁请求，在获得封锁后，事务T就对该数据对象有了一定的控制，在事务T释放它的锁之前，其他的事务不能更新此数据对象。</p>
+<p>排它锁（写锁，Exclusive Locks，简称X锁）</p>
+<p>共享锁（读锁，Share Locks，简称S锁）</p>
+<p><strong>封锁协议</strong></p>
+<p>三级锁协议</p>
+<p><img src="D:\ColinJay\source\_posts\Database\sjk.jpg" width="400px" height="600px" style="transform:rotate(270deg);"></p>
+<p><strong>并发调度的可串行性</strong></p>
+<p>多个事务的并发执行是正确的，当且仅当其结果与按某一次序串行地执行它们时的结果相同，称这种调度策略为可串行化（Serializable）的调度。</p>
+<p>可串行性是并发事务正确调度的准则</p>
+<p><strong>冲突操作</strong></p>
+<p>不同的事务对同一个数据的读写操作和写写操作是冲突操作</p>
+<ul>
+<li>Ri(x)与Wj(x)冲突</li>
+<li>Wi(x)与Wj(x)冲突 </li>
+</ul>
+<p>其他操作不是冲突操作</p>
+<p><strong>可串行化调度的充分条件</strong></p>
+<p>若一个调度是冲突可串行化的，则一定是可串行的调度。</p>
+<p><strong>两段锁协议</strong></p>
+<p>所有事务必须分两个阶段对数据项加锁和解锁：</p>
+<ul>
+<li><p>在对任何数据进行读、写操作之前，首先要申请并获得对该数据的封锁</p>
+</li>
+<li><p>在释放一个封锁之后，事务不再申请和获得任何其他封锁</p>
+</li>
+</ul>
+<p>两段锁协议是实现并发控制的主要方法。</p>
+<p>两段锁协议就是保证并发调度可串行性的封锁协议。</p>
+<p>若并发执行的所有事务均遵守两段锁协议，则对这些事务的任何并发调度策略都是可串行化的。</p>
+<p>两段锁协议并不要求事务必须一次将所有要使用的数据全部加锁，因此遵守两段锁协议的事务可能发生死锁。</p>
+<p><strong>封锁的粒度</strong></p>
+<p>封锁对象的大小称为封锁粒度</p>
+<p><strong>多粒度封锁</strong></p>
+<p>如果在一个系统中同时支持多种封锁粒度供不同的事务选择是比较理想的，这种封锁方法称为多粒度封锁</p>
+<p>多粒度树的根结点是整个数据库，表示最大的数据粒度，叶结点表示最小的数据粒度。</p>
+<p>三级粒度树：数据库、关系、元组</p>
+<p>四级粒度树：数据库、数据分区、数据文件、数据记录</p>
+<p>多粒度封锁协议允许多粒度树中的每个结点被独立的加锁。对一个结点加锁意味着这个结点的所有后裔结点也被加以同样类型的锁。因此，在多粒度封锁中一个数据对象可能以两种方式封锁，显示封锁和隐式封锁。</p>
+<ul>
+<li><p>显式封锁是应事务的要求直接加到数据对象上的封锁</p>
+</li>
+<li><p>隐式封锁是该数据对象没有独立加锁，是由于其上级结点加锁而使该数据对象加上了锁</p>
+</li>
+</ul>
+<p><strong>意向锁</strong></p>
+<p>如果对一个结点加意向锁，则说明该结点的下层结点正在被(准备)加锁；对任一结点加锁时，必须先对它的上层结点加意向锁。 </p>
+<p>IS锁 </p>
+<p>如果对一个数据对象加IS锁，表示它的后裔结点拟（意向）加S锁。</p>
+<p>IX锁<br>如果对一个数据对象加IX锁，表示它的后裔结点拟（意向）加X锁。</p>
+<p>SIX锁<br>如果对一个数据对象加SIX锁，表示对它加S锁，再加IX锁，即SIX = S + IX。</p>
+
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/04/08/WeeklyPlan/" data-toggle="tooltip" data-placement="top" title="21考研周计划">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                
+
+<link rel="stylesheet" href="/css/music-player/fonts/iconfont.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/reset.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/player.css">
+
+
+
+<div class="music-player">
+    <audio class="music-player__audio" ></audio>
+    <div class="music-player__main">
+        <div class="music-player__blur"></div>
+        <div class="music-player__disc">
+            <div class="music-player__image">
+                <img width="100%" src="" alt="">
+            </div>
+            <div class="music-player__pointer"><img width="100%" src="/img/cd_tou.png" alt=""></div>
+        </div>
+        <div class="music-player__controls">
+            <div class="music__info">
+                <h3 class="music__info--title">...</h3>
+                <p class="music__info--singer">...</p>
+            </div>
+            <div class="player-control">
+                <div class="player-control__content">
+                    <div class="player-control__btns">
+                        <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                        <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+                        <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                        <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+                    </div>
+                    <div class="player-control__volume">
+                        <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                        <div class="control__volume--progress player_progress"></div>
+                    </div>
+                </div>
+                <div class="player-control__content">
+                    <div class="player__song--progress player_progress"></div>
+                    <div class="player__song--timeProgess nowTime">00:00</div>
+                    <div class="player__song--timeProgess totalTime">00:00</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/music-player/utill.js"></script>
+
+
+<script src="/js/music-player/jquery.min.js"></script>
+
+
+<script src="/js/music-player/player.js"></script>
+
+
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: md5("https://colin-jay.cn/2020/04/27/Database/index.html"), // optional
+    owner: "Colin-Jay",
+    repo: "BlogsComment",
+    oauth: {
+      client_id: "e2631522580637e4cbcc",
+      client_secret: "783eac5c722387d050bba878099c8ab3c517beb1",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#数据库系统概论"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">数据库系统概论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#绪论"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">绪论</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#关系数据库"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">关系数据库</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#关系数据库标准语言SQL"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">关系数据库标准语言SQL</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据库安全性"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">数据库安全性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据库完整性"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">数据库完整性</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#关系数据库理论"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">关系数据库理论</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据库设计"><span class="toc-nav-number">1.7.</span> <span class="toc-nav-text">数据库设计</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#关系查询处理和查询优化"><span class="toc-nav-number">1.8.</span> <span class="toc-nav-text">关系查询处理和查询优化</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#数据库恢复技术"><span class="toc-nav-number">1.9.</span> <span class="toc-nav-text">数据库恢复技术</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#并发控制"><span class="toc-nav-number">1.10.</span> <span class="toc-nav-text">并发控制</span></a></li></ol></li></ol>
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#note" title="note">note</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="#" target="_blank">Colin-Jay&#39;s Blog</a></li>
+                    
+                        <li><a href="https://joke-lin.top/" target="_blank">Joke-Lin&#39;s Blog</a></li>
+                    
+                        <li><a href="https://yez-liu.github.io/" target="_blank">YeZ-Liu&#39;s Blog</a></li>
+                    
+                        <li><a href="http://www.gatesma.cn/" target="_blank">GatesMa&#39;s Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Colin-Jay">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/ColinJay16">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/colin.jay.1420">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/ping-fan-de-jie-er">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Colin-Jay 2020 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">
+                        <i>hexo-theme-snail</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=dusign&repo=hexo-theme-snail&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://Colin-Jay.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&quot;有志者，事竟成。&quot; ,&quot;道阻且长，任重道远。&quot; ,&quot;千里之行，始于足下。&quot; ,&quot;吾生也有涯，而知也无涯。&quot; ,&quot;岁寒，然后知松柏之后凋也。&quot; ,&quot;路漫漫其修远兮，吾将上下而求索。&quot; ,&quot;三更灯火五更鸡，正是男儿发愤时。&quot; ,&quot;莫愁前路无知己，天下谁人不识君。&quot; ,&quot;曾经沧海难为水，除却巫山不是云。&quot; ,&quot;山重水复疑无路，柳暗花明又一村。&quot;]' color='[&quot;rgb(238,44,44)&quot; ,&quot;rgb(255,69,0)&quot; ,&quot;rgb(255,165,0)&quot; ,&quot;rgb(255,215,0)&quot; ,&quot;rgb(188,238,104)&quot; ,&quot;rgb(78,238,148)&quot; ,&quot;rgb(135,206,235)&quot; ,&quot;rgb(65,105,225)&quot; ,&quot;rgb(148,0,211)&quot; ,&quot;rgb(240,255,240)&quot;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        tex2jax: {
+            inlineMath: [ ["$","$"], ["\\(","\\)"] ],
+            skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code'],
+            processEscapes: true
+        }
+    });
+    MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax();
+        for (var i = 0; i < all.length; ++i)
+            all[i].SourceElement().parentNode.className += ' has-jax';
+    });
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.6/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+</body>
+
+</html>

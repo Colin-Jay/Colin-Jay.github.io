@@ -1,0 +1,1096 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- Head tag -->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="google-site-verification" content="xBT4GhYoi5qRD5tr338pgPM5OWHHIDR6mNg1a3euekI" />
+    <meta name="baidu-site-verification" content="093lY4ziMu" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="description" content="Colin-Jay&#39;s Blogs">
+    <meta name="keyword"  content="Colin-Jay, Blogs">
+    <link rel="shortcut icon" href="/img/tortoise_cartoon.png">
+    <!-- Place this tag in your head or just before your close body tag. -->
+    <script async defer src="https://buttons.github.io/buttons.js"></script>
+    <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
+    <title>
+        
+          编译原理笔记 - Colin-Jay&#39;s Blogs
+        
+    </title>
+
+    <link rel="canonical" href="https://Colin-Jay.cn/2020/05/11/CompilerPrinciple/">
+
+    <!-- Bootstrap Core CSS -->
+    
+<link rel="stylesheet" href="/css/bootstrap.min.css">
+
+
+    <!-- Custom CSS --> 
+    
+        
+<link rel="stylesheet" href="/css/dusign-light.css">
+
+        
+<link rel="stylesheet" href="/css/dusign-common-light.css">
+
+        
+<link rel="stylesheet" href="/css/font-awesome.css">
+
+        
+<link rel="stylesheet" href="/css/toc.css">
+
+        <!-- background effects end -->
+    
+    
+    <!-- Pygments Highlight CSS -->
+    
+<link rel="stylesheet" href="/css/highlight.css">
+
+
+    
+<link rel="stylesheet" href="/css/widget.css">
+
+
+    
+<link rel="stylesheet" href="/css/rocket.css">
+
+
+    
+<link rel="stylesheet" href="/css/signature.css">
+
+
+    
+<link rel="stylesheet" href="/css/fonts.googleapis.css">
+
+
+    <link rel="stylesheet" href="//cdn.bootcss.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- photography -->
+    
+<link rel="stylesheet" href="/css/photography.css">
+
+
+    <!-- ga & ba script hoook -->
+    <script></script>
+<meta name="generator" content="Hexo 4.2.0"></head>
+
+
+<!-- hack iOS CSS :active style -->
+<body ontouchstart="">
+
+    <!-- background effects start -->
+    
+    <!-- background effects end -->
+
+	<!-- Modified by Yu-Hsuan Yen -->
+<!-- Post Header -->
+<style type="text/css">
+    header.intro-header{
+        
+            
+                background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url('../../../../img/Note.jpg')
+                /*post*/
+            
+        
+    }
+    
+    #signature{
+        background-image: url('/img/signature/Just-do-it-white.png');
+    }
+    
+</style>
+
+<header class="intro-header" >
+    <!-- Signature -->
+    <div id="signature">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                
+                    <div class="post-heading">
+                        <div class="tags">
+                            
+                              <a class="tag" href="/tags/#note" title="note">note</a>
+                            
+                              <a class="tag" href="/tags/#CompilerPrinciple" title="CompilerPrinciple">CompilerPrinciple</a>
+                            
+                        </div>
+                        <h1>编译原理笔记</h1>
+                        <h2 class="subheading"></h2>
+                        <span class="meta">
+                            Posted by Colin-Jay on
+                            2020-05-11
+                        </span>
+
+                        
+                            <div class="blank_box"></div>
+                            <span class="meta">
+                                Words <span class="post-count">4.8k</span> and
+                                Reading Time <span class="post-count">17</span> Minutes
+                            </span>
+                            <div class="blank_box"></div>
+                            <!-- 不蒜子统计 start -->
+                            <span class="meta">
+                                Viewed <span id="busuanzi_value_page_pv"><i class="fa fa-spinner fa-spin"></i></span> Times
+                            </span>
+                            <!-- 不蒜子统计 end -->
+                        
+
+                    </div>
+                
+
+                </div>
+            </div>
+        </div>      
+    </div>
+
+    
+    <div class="waveWrapper">
+        <div class="wave wave_before" style="background-image: url('/img/wave-light.png')"></div>
+        <div class="wave wave_after" style="background-image: url('/img/wave-light.png')"></div>
+    </div>
+    
+</header>
+
+	
+    <!-- Navigation -->
+<nav class="navbar navbar-default navbar-custom navbar-fixed-top">
+    <div class="container-fluid">
+        <!-- Brand and toggle get grouped for better mobile display -->
+        <div class="navbar-header page-scroll">
+            <button type="button" class="navbar-toggle">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="/">Colin Jay</a>
+        </div>
+
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <!-- Known Issue, found by Hux:
+            <nav>'s height woule be hold on by its content.
+            so, when navbar scale out, the <nav> will cover tags.
+            also mask any touch event of tags, unfortunately.
+        -->
+        <div id="huxblog_navbar">
+            <div class="navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="/">Home</a>
+                    </li>
+
+                    
+
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/about/">About</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/categories/">Categories</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/archive/">Archives</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/photography/">Photography</a>
+                        </li>
+                        
+                    
+
+                        
+                        <li>
+                            <a href="/tags/">Tags</a>
+                        </li>
+                        
+                    
+                    
+                    
+                    <li>
+                        <a href="https://me.csdn.net/qq_42007035" target="_blank">CSDN</a>
+                    </li>
+                    
+                </ul>
+            </div>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container -->
+</nav>
+<script>
+    // Drop Bootstarp low-performance Navbar
+    // Use customize navbar with high-quality material design animation
+    // in high-perf jank-free CSS3 implementation
+    var $body   = document.body;
+    var $toggle = document.querySelector('.navbar-toggle');
+    var $navbar = document.querySelector('#huxblog_navbar');
+    var $collapse = document.querySelector('.navbar-collapse');
+
+    $toggle.addEventListener('click', handleMagic)
+    function handleMagic(e){
+        if ($navbar.className.indexOf('in') > 0) {
+        // CLOSE
+            $navbar.className = " ";
+            // wait until animation end.
+            setTimeout(function(){
+                // prevent frequently toggle
+                if($navbar.className.indexOf('in') < 0) {
+                    $collapse.style.height = "0px"
+                }
+            },400)
+        }else{
+        // OPEN
+            $collapse.style.height = "auto"
+            $navbar.className += " in";
+        }
+    }
+</script>
+
+
+    <!-- Main Content -->
+    
+
+
+<!-- Post Content -->
+<article>
+    <div class="container">
+        <div class="row">
+
+            <!-- Post Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                post-container">
+
+                <h1 id="编译原理笔记"><a href="#编译原理笔记" class="headerlink" title="编译原理笔记"></a>编译原理笔记</h1><p>[TOC]</p>
+<h2 id="第一章-引论"><a href="#第一章-引论" class="headerlink" title="第一章 引论"></a>第一章 引论</h2><h3 id="1-1-语言处理器"><a href="#1-1-语言处理器" class="headerlink" title="1.1 语言处理器"></a>1.1 语言处理器</h3><p><strong>编译器</strong></p>
+<p>阅读以某一种语言（源代码）编写的程序，并把该程序翻译成为一个等价的、用另一种语言（目标语言）编写的程序。</p>
+<p><strong>解释器</strong></p>
+<p>另一种常见的语言处理器，并不通过翻译的方式生成目标程序，直接利用用户提供的输入执行源程序中指定的操作。</p>
+<p><img src=".\CompilerPrinciple\1.png" alt=""></p>
+<p>预处理器：一个源程序可能被分割成多个模块，并存放于独立的文件中，把源程序聚合在一起的任务有时会由一个被成为预处理器的程序独立完成。</p>
+<p>汇编器：对编译器产生的汇编语言程序进行处理，并生成可重定位的机器代码。</p>
+<p>链接器/加载器：一个文件中的代码可能指向另一个文件中的位置，而链接器能够解决外部内存地址的问题。最后，加载器把所有的可执行目标文件放到内存中执行。</p>
+<h3 id="1-2-一个编译器的结构"><a href="#1-2-一个编译器的结构" class="headerlink" title="1.2 一个编译器的结构"></a>1.2 一个编译器的结构</h3><p>编译器的两个组成部分：分析部分和综合部分。</p>
+<p><img src=".\CompilerPrinciple\2.png" alt=""></p>
+<p>一个编译器的各个步骤：</p>
+<p><img src=".\CompilerPrinciple\3.png" alt=""></p>
+<ul>
+<li>词法分析</li>
+</ul>
+<p>词法分析/扫描：词法分析器读入组成源程序的字符流，并且将它们组织成为有意义的词素的序列。每个词素都被映射成如下语法单元，传送给语法分析：</p>
+<token-name, attribute-value>
+
+<p>分隔词素的空格会被词法分析器忽略掉。</p>
+<ul>
+<li>语法分析</li>
+</ul>
+<p>语法分析/解析：语法分析器使用由词法分析器生成的各个词法单元的第一个分量来创建树形的中间表示。</p>
+<ul>
+<li>语义分析</li>
+</ul>
+<p>语义分析器使用语法树和符号表中的信息来检查源程序是否和语言定义的语义一致。它同时也收集类型信息，并把这些信息存放在语法树或者符号表中，以便在随后的中间代码生成过程中使用。</p>
+<ul>
+<li>中间代码生成</li>
+</ul>
+<p>三地址代码的中间表示形式。</p>
+<ul>
+<li><p>代码优化</p>
+</li>
+<li><p>代码生成</p>
+</li>
+</ul>
+<p>代码生成器以源程序的中间表示形式作为输入，并把它映射到目标语言。</p>
+<ul>
+<li>符号表管理</li>
+</ul>
+<p><img src=".\CompilerPrinciple\5.png" alt=""></p>
+<ul>
+<li><p>将多个步骤组合成趟</p>
+</li>
+<li><p>编译器构造工具</p>
+</li>
+</ul>
+<p>一个赋值语句的翻译：</p>
+<p><img src=".\CompilerPrinciple\4.png" alt=""></p>
+<h2 id="第二章-一个简单的语法制导翻译器"><a href="#第二章-一个简单的语法制导翻译器" class="headerlink" title="第二章 一个简单的语法制导翻译器"></a>第二章 一个简单的语法制导翻译器</h2><h3 id="2-7-符号表"><a href="#2-7-符号表" class="headerlink" title="2.7 符号表"></a>2.7 符号表</h3><p><img src=".\CompilerPrinciple\6.png" alt=""></p>
+<h4 id="2-7-1-为每个作用域设置一个符号表"><a href="#2-7-1-为每个作用域设置一个符号表" class="headerlink" title="2.7.1 为每个作用域设置一个符号表"></a>2.7.1 为每个作用域设置一个符号表</h4><p><strong>最近嵌套规则</strong></p>
+<p>一个标识符x在最近声明x的作用域中，也就是说，从x出现的块开始，从内向外检查各个块时找到的第一个对x的声明。</p>
+<p><strong>符号表支持的三种操作：</strong></p>
+<ul>
+<li>创建一个新符号表</li>
+<li>在当前表中加入一个新的条目（键-值对）</li>
+<li>得到一个标识符的条目</li>
+</ul>
+<h4 id="2-7-2-符号表的使用"><a href="#2-7-2-符号表的使用" class="headerlink" title="2.7.2 符号表的使用"></a>2.7.2 符号表的使用</h4><p><img src=".\CompilerPrinciple\7.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\8.png" alt=""></p>
+<h2 id="第三章-词法分析"><a href="#第三章-词法分析" class="headerlink" title="第三章 词法分析"></a>第三章 词法分析</h2><h3 id="3-1-词法分析器的作用"><a href="#3-1-词法分析器的作用" class="headerlink" title="3.1  词法分析器的作用"></a>3.1  词法分析器的作用</h3><p>词法分析是编译的第一阶段。词法分析器的主要任务是读入源程序的输入字符、将它们组成词素，生成并输出一个词法单元序列，每个词法单元序列对应于一个词素。</p>
+<p><img src=".\CompilerPrinciple\9.png" alt=""></p>
+<p>词法分析器在编译器中负责读取源程序，因此还会完成一些识别词素之外的其他任务。</p>
+<ul>
+<li>任务一：过滤源程序中的注释和空白</li>
+<li>任务二：将编译器生成的错误信息和源程序的位置联系起来</li>
+</ul>
+<p>有时，词法分析器也可以分成两个级联的处理阶段</p>
+<ul>
+<li>扫描阶段主要负责完成一些不需要生成词法单元的简单处理，比如删除注释和将多个连续的空白字符压缩成一个字符</li>
+<li>词法分析阶段是较为复杂的部分，它处理扫描阶段的输出并生成词法单元</li>
+</ul>
+<h4 id="3-1-1-词法分析及语法分析"><a href="#3-1-1-词法分析及语法分析" class="headerlink" title="3.1.1 词法分析及语法分析"></a>3.1.1 词法分析及语法分析</h4><p>编译的分析部分划分为词法分析和语法分析阶段的原因：</p>
+<ul>
+<li>最重要的考虑是简化编译器的设计</li>
+<li>提高编译器的效率</li>
+<li>增强编译器的可移植性</li>
+</ul>
+<h4 id="3-1-2-词法单元、模式和词素"><a href="#3-1-2-词法单元、模式和词素" class="headerlink" title="3.1.2 词法单元、模式和词素"></a>3.1.2 词法单元、模式和词素</h4><p><img src=".\CompilerPrinciple\10.png" alt=""></p>
+<h4 id="3-1-3-词法单元的属性"><a href="#3-1-3-词法单元的属性" class="headerlink" title="3.1.3 词法单元的属性"></a>3.1.3 词法单元的属性</h4><p>一个标识符（id）的属性值是一个指向符号表中该标识符对应条目的指针。</p>
+<h4 id="3-1-4-词法错误"><a href="#3-1-4-词法错误" class="headerlink" title="3.1.4 词法错误"></a>3.1.4 词法错误</h4><p>“恐慌模式”恢复：从剩余的输入中不断删除字符，直到词法分析器能够在剩余输入的开头发现一个正确的词法单元为止。</p>
+<p>其他错误恢复动作：</p>
+<p><img src=".\CompilerPrinciple\11.png" alt=""></p>
+<h3 id="3-2-输入缓冲"><a href="#3-2-输入缓冲" class="headerlink" title="3.2 输入缓冲"></a>3.2 输入缓冲</h3><p>加快源程序读入速度</p>
+<h4 id="3-2-1-缓冲区对"><a href="#3-2-1-缓冲区对" class="headerlink" title="3.2.1 缓冲区对"></a>3.2.1 缓冲区对</h4><p><img src=".\CompilerPrinciple\12.png" alt=""></p>
+<h4 id="3-2-2-哨兵标记"><a href="#3-2-2-哨兵标记" class="headerlink" title="3.2.2 哨兵标记"></a>3.2.2 哨兵标记</h4><p>每次对于forward指针需要检查两步：是否到达缓冲区末尾；确定读入字符是什么。（eof只能代表缓冲区末尾）</p>
+<p><img src=".\CompilerPrinciple\13.png" alt=""></p>
+<p>就是说，<strong>引入哨兵标记后每次只要检查forward指针的读入字符是什么即可。</strong></p>
+<h3 id="3-3-词法单元的规约"><a href="#3-3-词法单元的规约" class="headerlink" title="3.3 词法单元的规约"></a>3.3 词法单元的规约</h3><p>正则表达式是一种用来描述词素模式的重要表示方法。</p>
+<h4 id="3-3-1-串和语言"><a href="#3-3-1-串和语言" class="headerlink" title="3.3.1 串和语言"></a>3.3.1 串和语言</h4><p>字母表：一个有限的符号集合</p>
+<p>串：某个字母表中符号的一个有穷序列</p>
+<p>空串：长度为0的串，用ε表示</p>
+<p>语言：某个给定字母表上一个任意的可数的串集合</p>
+<h4 id="3-3-2-语言上的运算"><a href="#3-3-2-语言上的运算" class="headerlink" title="3.3.2 语言上的运算"></a>3.3.2 语言上的运算</h4><p><img src=".\CompilerPrinciple\14.png" alt=""></p>
+<h4 id="3-3-3-正则表达式"><a href="#3-3-3-正则表达式" class="headerlink" title="3.3.3 正则表达式"></a>3.3.3 正则表达式</h4><p>letter_表示任一字母或下划线，digit表示数位（任一单个数字）</p>
+<p><img src=".\CompilerPrinciple\15.png" alt=""></p>
+<h4 id="3-3-4-正则定义"><a href="#3-3-4-正则定义" class="headerlink" title="3.3.4 正则定义"></a>3.3.4 正则定义</h4><p><img src=".\CompilerPrinciple\16.png" alt=""></p>
+<p>前面的d为后面的d铺垫，方便后面使用，从而达到最后的d可以用∑和前面的d表示</p>
+<h4 id="3-3-5-正则表达式的扩展"><a href="#3-3-5-正则表达式的扩展" class="headerlink" title="3.3.5 正则表达式的扩展"></a>3.3.5 正则表达式的扩展</h4><ul>
+<li>一个或多个实例：单目后缀运算符+</li>
+<li>零个或一个实例：单目后缀运算符?</li>
+<li>字符类：[ ]</li>
+</ul>
+<p><img src=".\CompilerPrinciple\17.png" alt=""></p>
+<h3 id="3-4-词法单元的识别"><a href="#3-4-词法单元的识别" class="headerlink" title="3.4 词法单元的识别"></a>3.4 词法单元的识别</h3><h4 id="3-4-1-状态转换图"><a href="#3-4-1-状态转换图" class="headerlink" title="3.4.1 状态转换图"></a>3.4.1 状态转换图</h4><ul>
+<li>圆圈或结点表示状态</li>
+<li>边表示从一个状态指向另一个状态</li>
+<li>边的标号包含了一个或多个符合，表示从某个状态经过某下个输入符合进入边指向的另一端状态</li>
+</ul>
+<p><img src=".\CompilerPrinciple\52.png" alt=""></p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\53.png" alt=""></p>
+<h4 id="3-4-2-保留字和标识符的识别"><a href="#3-4-2-保留字和标识符的识别" class="headerlink" title="3.4.2 保留字和标识符的识别"></a>3.4.2 保留字和标识符的识别</h4><p>我们可以使用两种方法来处理那些看起来像标识符的保留字：</p>
+<ul>
+<li>初始化时就将各个保留字填入符号表中</li>
+<li>为每个关键字建立单独的状态转换图</li>
+</ul>
+<h4 id="3-4-4-基于状态转换图的词法分析器的体系结构"><a href="#3-4-4-基于状态转换图的词法分析器的体系结构" class="headerlink" title="3.4.4 基于状态转换图的词法分析器的体系结构"></a>3.4.4 基于状态转换图的词法分析器的体系结构</h4><p><img src=".\CompilerPrinciple\54.png" alt=""></p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\55.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\56.png" alt=""></p>
+<h3 id="3-6-有穷自动机"><a href="#3-6-有穷自动机" class="headerlink" title="3.6 有穷自动机"></a>3.6 有穷自动机</h3><p>Lex（词法分析器生成工具）将它的输入程序变成一个词法分析器转换的核心是被称为有穷自动机的表示方法。这些自动机在本质上是与状态转换图类似的图，但有如下几点不同：</p>
+<ul>
+<li>有穷自动机是识别器，它们只能对每个可能的输入串简单地回答“是”或“否”</li>
+<li>有穷自动机分为两类：<ul>
+<li>不确定的有穷自动机（NFA）：对其边上的标号没有任何限制。一个符号标记离开同一状态的多条边，并且空串ε也可以作为标号的边</li>
+<li>确定的有穷自动机（DFA）：对于每个状态及自动机输入字母表中的每个符号，有且只有一条离开该状态、以该符号为标号的边</li>
+</ul>
+</li>
+</ul>
+<p>确定的和不确定的有穷自动机能识别的语言的集合是相同的。事实上，这些语言的集合正好是能够用正则表达式描述的语言的集合。这个集合中的语言称为正则语言。</p>
+<h4 id="3-6-1-不确定的有穷自动机"><a href="#3-6-1-不确定的有穷自动机" class="headerlink" title="3.6.1 不确定的有穷自动机"></a>3.6.1 不确定的有穷自动机</h4><p><img src=".\CompilerPrinciple\57.png" alt=""></p>
+<p>示例：</p>
+<p>状态0可以由a到达状态0或状态1</p>
+<p><img src=".\CompilerPrinciple\58.png" alt=""></p>
+<h4 id="3-6-2-转换表"><a href="#3-6-2-转换表" class="headerlink" title="3.6.2 转换表"></a>3.6.2 转换表</h4><p><img src=".\CompilerPrinciple\59.png" alt=""></p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\60.png" alt=""></p>
+<h4 id="3-6-3-自动机中输入字符串的接受"><a href="#3-6-3-自动机中输入字符串的接受" class="headerlink" title="3.6.3 自动机中输入字符串的接受"></a>3.6.3 自动机中输入字符串的接受</h4><p>只要存在某条[其标号序列为某符号串的]路径能够从开始状态到达某个接受状态，NFA就接受这个串。</p>
+<p>路径中的ε标号将被忽略</p>
+<p><img src=".\CompilerPrinciple\61.png" alt=""></p>
+<h4 id="3-6-4-确定的有穷自动机"><a href="#3-6-4-确定的有穷自动机" class="headerlink" title="3.6.4 确定的有穷自动机"></a>3.6.4 确定的有穷自动机</h4><p><img src=".\CompilerPrinciple\62.png" alt=""></p>
+<p>DFA相比NFA，NFA的符号有空串ε且同一个符号可以由同个状态出发到达多个状态，DFA的符号没有空串符号ε且每个状态的每个符号的出边存在且唯一</p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\63.png" alt=""></p>
+<h3 id="3-7-从正则表达式到自动机"><a href="#3-7-从正则表达式到自动机" class="headerlink" title="3.7 从正则表达式到自动机"></a>3.7 从正则表达式到自动机</h3><p>NFA对于一个输入符号可以选择不同的转换，它还可以执行输入ε上的转换，甚至可以选择是对ε或是对真实的输入符号执行转换，因此对NFA的模拟不如对DFA的模拟直接。于是，我们需要将一个NFA转换为一个识别相同语言的DFA。</p>
+<h4 id="3-7-1-从NFA到DFA的转换"><a href="#3-7-1-从NFA到DFA的转换" class="headerlink" title="3.7.1 从NFA到DFA的转换"></a>3.7.1 从NFA到DFA的转换</h4><p><strong>子集构造法</strong></p>
+<p><img src=".\CompilerPrinciple\73.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\74.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\75.png" alt=""></p>
+<p>将NFA转换为DFA，通过子集构造法构造<strong>转换表Dtran</strong>得到DFA：</p>
+<ul>
+<li>Dtran各行：NFA状态集—DFA状态—DFA各个出边</li>
+<li><p>Dstates初始为ε-closure(s0)，且未标记</p>
+</li>
+<li><p>当Dstates中没用未标记的状态时，即DFA的状态都被确定，停止循环就得到了DFA：</p>
+<ul>
+<li>将Dstates中未标记的状态通过出边达到的状态集{ε-closure[move(T,a)]}构成新的状态，如果不在Dstates中，则加入Dstates中</li>
+</ul>
+</li>
+<li>通过DFA的每个状态和其对应的出边即可画出DFA</li>
+</ul>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\76.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\77.png" alt=""></p>
+<h4 id="3-7-2-NFA的模拟"><a href="#3-7-2-NFA的模拟" class="headerlink" title="3.7.2 NFA的模拟"></a>3.7.2 NFA的模拟</h4><p><img src=".\CompilerPrinciple\64.png" alt=""></p>
+<h4 id="3-7-3-NFA模拟的效率"><a href="#3-7-3-NFA模拟的效率" class="headerlink" title="3.7.3 NFA模拟的效率"></a>3.7.3 NFA模拟的效率</h4><p>算法总效率：O(k(n + m))</p>
+<h4 id="3-7-4-从正则表达式构造NFA"><a href="#3-7-4-从正则表达式构造NFA" class="headerlink" title="3.7.4 从正则表达式构造NFA"></a>3.7.4 从正则表达式构造NFA</h4><p>将正则表达式转化为一个NFA的<strong>McMaughton-Yamada-Thompson</strong>算法</p>
+<p><img src=".\CompilerPrinciple\68.png" alt=""></p>
+<p><strong>基本规则：</strong></p>
+<p><img src=".\CompilerPrinciple\69.png" alt=""></p>
+<p><strong>归纳规则：</strong></p>
+<p><img src=".\CompilerPrinciple\70.png" alt=""></p>
+<p>将正则表达式转化为NFA，先画出由表达式构成的语法分析树，最小到每个表达式不能再划分。每个最小的表达式由基本规则构造出NFA，然后四种情况（并、连接、闭包、括号）根据归纳规则合成最终表达式的NFA。</p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\71.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\72.png" alt=""></p>
+<h3 id="3-9-基于DFA的模式匹配器的优化"><a href="#3-9-基于DFA的模式匹配器的优化" class="headerlink" title="3.9 基于DFA的模式匹配器的优化"></a>3.9 基于DFA的模式匹配器的优化</h3><h4 id="3-9-6-最小化一个DFA的状态数"><a href="#3-9-6-最小化一个DFA的状态数" class="headerlink" title="3.9.6 最小化一个DFA的状态数"></a>3.9.6 最小化一个DFA的状态数</h4><p>我们总是希望使用的DFA的状态数量尽可能地少。</p>
+<p>只需要改变状态名字就可以将一个自动机转换成另一个自动机，我们就说这两个自动机是同构的。</p>
+<p><strong>任何正则语言都有一个唯一的（不计同构）状态数目最少的DFA。</strong></p>
+<p><strong>从任意一个接受相同语言的DFA出发，通过分组合并等价的状态，我们总是可以构建得到这个状态数最少的DFA。</strong></p>
+<p><img src=".\CompilerPrinciple\78.png" alt=""></p>
+<p><strong>算法：</strong></p>
+<p><img src=".\CompilerPrinciple\79.png" alt=""></p>
+<p>最小化一个DFA的状态数量，进行以下步骤：</p>
+<ul>
+<li>将DFA划分为Π，包含两组：接受状态组和非接受状态组</li>
+<li>对于Π的每个组分别进行如下判断<ul>
+<li>该组的每个状态经过相同的输入符号（每个符号都有进行判断）都能到达当前Π的相同组，若到达不同的组，则根据到达的组是否相同划分当前分组</li>
+<li>将这些更小的组形成新的划分Π，直至Π不变</li>
+</ul>
+</li>
+<li>再最后的Π中，每个组选取一个状态作为代表构建D’，其中：<ul>
+<li>D’的开始状态是包含了D的开始状态的组的代表</li>
+<li>D’的接受状态是<strong>那些</strong>包含了D的接受状态的组的代表</li>
+</ul>
+</li>
+</ul>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\80.png" alt=""></p>
+<h2 id="第四章-语法分析"><a href="#第四章-语法分析" class="headerlink" title="第四章 语法分析"></a>第四章 语法分析</h2><h3 id="4-1-引论"><a href="#4-1-引论" class="headerlink" title="4.1 引论"></a>4.1 引论</h3><h4 id="4-1-1-语法分析器的作用"><a href="#4-1-1-语法分析器的作用" class="headerlink" title="4.1.1 语法分析器的作用"></a>4.1.1 语法分析器的作用</h4><p>语法分析器构造出一棵语法分析树，并把它传递给编译器的其他部分近一步处理。</p>
+<p><img src=".\CompilerPrinciple\18.png" alt=""></p>
+<h3 id="4-2-上下无关文法"><a href="#4-2-上下无关文法" class="headerlink" title="4.2 上下无关文法"></a>4.2 上下无关文法</h3><h4 id="4-2-1-上下无关文法的正式定义"><a href="#4-2-1-上下无关文法的正式定义" class="headerlink" title="4.2.1 上下无关文法的正式定义"></a>4.2.1 上下无关文法的正式定义</h4><p><img src=".\CompilerPrinciple\19.png" alt=""></p>
+<h4 id="4-2-3-推导"><a href="#4-2-3-推导" class="headerlink" title="4.2.3 推导"></a>4.2.3 推导</h4><p><img src=".\CompilerPrinciple\20.png" alt=""></p>
+<p>句型：可能包含终结符号又包含非终结符号，也可能是空串</p>
+<p>句子：不包含非终结符号的句型</p>
+<p>上下文无关语言：由文法生成的语言</p>
+<p>文法等价：两个文法生成相同语言</p>
+<p><img src=".\CompilerPrinciple\21.png" alt=""></p>
+<p>最右推导有时也称为规范推导。</p>
+<h4 id="4-2-4-语法分析树和推导"><a href="#4-2-4-语法分析树和推导" class="headerlink" title="4.2.4 语法分析树和推导"></a>4.2.4 语法分析树和推导</h4><p><img src=".\CompilerPrinciple\22.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\66.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\67.png" alt=""></p>
+<p>语法分析树和最左推导/最右推导之间存在着一种一对一的关系。每一个语法分析树都和唯一的最左推导及最右推导相关联。（1对1+1）</p>
+<h4 id="4-2-5-二义性"><a href="#4-2-5-二义性" class="headerlink" title="4.2.5 二义性"></a>4.2.5 二义性</h4><p><img src=".\CompilerPrinciple\23.png" alt=""></p>
+<p>即一个没有二义性的文法对一个句子只能有一个语法分析树、一个最左推导和一个最右推导。</p>
+<h4 id="4-2-7-上下文无关文法和正则表达式"><a href="#4-2-7-上下文无关文法和正则表达式" class="headerlink" title="4.2.7 上下文无关文法和正则表达式"></a>4.2.7 上下文无关文法和正则表达式</h4><p>文法是比正则表达式表达能力更强的表示方法。</p>
+<p>每个可以使用正则表达式描述的构造都可以使用文法来描述，但是反之不成立。</p>
+<h3 id="4-3-设计文法"><a href="#4-3-设计文法" class="headerlink" title="4.3 设计文法"></a>4.3 设计文法</h3><h4 id="4-3-1-词法分析和语法分析"><a href="#4-3-1-词法分析和语法分析" class="headerlink" title="4.3.1 词法分析和语法分析"></a>4.3.1 词法分析和语法分析</h4><p>正则表达式最适合描述诸如标识符、常量、关键字、空白等语言构造的结构。文法最适合描述嵌套结构，比如对称的括号对，匹配的begin-end，相互对应的if-then-else等。这些嵌套结构不能使用正则表达式描述。</p>
+<h4 id="4-3-2-消除二义性"><a href="#4-3-2-消除二义性" class="headerlink" title="4.3.2 消除二义性"></a>4.3.2 消除二义性</h4><p><strong>优先级</strong></p>
+<p><img src=".\CompilerPrinciple\47.png" alt=""></p>
+<p><strong>结合性</strong></p>
+<p>左递归表示了左结合性，右递归表示了右结合性。</p>
+<p><img src=".\CompilerPrinciple\48.png" alt=""></p>
+<p><strong>悬挂else</strong></p>
+<p>采用就近匹配原则，有else就会和前面没有被匹配的if进行匹配</p>
+<p><img src=".\CompilerPrinciple\49.png" alt=""></p>
+<h4 id="4-3-3-左递归的消除"><a href="#4-3-3-左递归的消除" class="headerlink" title="4.3.3 左递归的消除"></a>4.3.3 左递归的消除</h4><p>自顶向下语法分析方法不能处理左递归文法，因此使用将左递归转换为右递归来消除左递归</p>
+<ul>
+<li>立即（直接）左递归</li>
+</ul>
+<p><img src=".\CompilerPrinciple\24.png" alt=""></p>
+<ul>
+<li>没有环或者ε产生式的文法G（间接左递归）</li>
+</ul>
+<p><img src=".\CompilerPrinciple\25.png" alt=""></p>
+<p>就是把每个非终结符的产生式右侧的【每个序号在这个非终结符前面的非终结符】用它（序号在前的那个非终结符）的产生式替换掉它</p>
+<h4 id="4-3-4-提取左公因子"><a href="#4-3-4-提取左公因子" class="headerlink" title="4.3.4 提取左公因子"></a>4.3.4 提取左公因子</h4><p>提取左公因子是一种文法转换方法，它可以产生适用于预测分析技术或自顶向下分析技术的文法。</p>
+<p><img src=".\CompilerPrinciple\26.png" alt=""></p>
+<p>间接左因子常采用代入法：</p>
+<p><img src=".\CompilerPrinciple\51.png" alt=""></p>
+<h3 id="4-4-自顶向下的语法分析"><a href="#4-4-自顶向下的语法分析" class="headerlink" title="4.4 自顶向下的语法分析"></a>4.4 自顶向下的语法分析</h3><p>自顶向下语法分析可以被看作是输入串构造语法分析树的问题，它从语法分析树的根节点开始，按照先根次序（深度优先），创建这棵语法分析树的各个节点。自顶向下语法分析也可以被看作寻找输入串的最左推导的过程。</p>
+<p>自顶向下分析算法：</p>
+<ul>
+<li>回溯分析（功能强大，但通常较慢，不适合实际构造编译器）</li>
+<li>预测分析（利用一个或多个输入记号来预测在多个产生式中怎么选择）【本章讨论】<ul>
+<li>递归下降</li>
+<li>LL(k)分析（向前看k个输入符号的预测，本章学习LL(1)文法）</li>
+</ul>
+</li>
+</ul>
+<h4 id="4-4-1-递归下降的语法分析"><a href="#4-4-1-递归下降的语法分析" class="headerlink" title="4.4.1 递归下降的语法分析"></a>4.4.1 递归下降的语法分析</h4><p><strong>递归下降分析</strong></p>
+<p>将一个非终结符的文法规则看作是识别A的一个过程的定义。</p>
+<p><img src=".\CompilerPrinciple\27.png" alt=""></p>
+<p>就是说对文法中的每个非终结符都有一个（使用它的产生式右侧作为规则）识别它的程序，该程序中每个终结符都对应了match()函数进行输入匹配的检查；每个非终结符都对应了调用相应非终结符的程序；产生式中的选择对应程序代码中的case或者if结构。</p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\28.png" alt=""></p>
+<p>由于<strong>左递归</strong>会使得程序不停的递归下去，所以需要使用EBNF{ }对文法进行改写才能使用自顶向下的分析方法</p>
+<p><img src=".\CompilerPrinciple\29.png" alt=""></p>
+<p>当有<strong>左因子</strong>时，通过EBNF[ ]改写文法</p>
+<p><img src=".\CompilerPrinciple\30.png" alt=""></p>
+<p>使用EBNF后通过程序处理运算顺序</p>
+<p><img src=".\CompilerPrinciple\31.png" alt=""></p>
+<p>在程序中构建语法树</p>
+<p><img src=".\CompilerPrinciple\32.png" alt=""></p>
+<p><img src=".\CompilerPrinciple\33.png" alt=""></p>
+<h4 id="4-4-2-FIRST和FOLLOW"><a href="#4-4-2-FIRST和FOLLOW" class="headerlink" title="4.4.2 FIRST和FOLLOW"></a>4.4.2 FIRST和FOLLOW</h4><p><strong>FIRST集</strong></p>
+<p><img src=".\CompilerPrinciple\34.png" alt=""></p>
+<p><strong>计算文法非终结符的First集算法：</strong></p>
+<ul>
+<li>将所有非终结符的First集置为空集</li>
+<li>重复下面的步骤直到所有非终结符的First集不发生变化<ul>
+<li>对每个非终结符的产生式（不含选择，有选择就拆分）A→X1X2…Xn进行下面的操作</li>
+<li>Xi从X1开始，将First(Xi)-{ε}加入First(A)中。如果Xi可推出空集，继续找X(i+1)；如果Xi不可以推出空集，则停止操作</li>
+<li>如果X1X2…Xn都可以推出空集，则将ε加入First(A)中。</li>
+</ul>
+</li>
+</ul>
+<p><img src=".\CompilerPrinciple\35.png" alt=""></p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\36.png" alt=""></p>
+<p><strong>FOLLOW集</strong></p>
+<p><img src=".\CompilerPrinciple\37.png" alt=""></p>
+<p><strong>计算FOLLOW集算法：</strong></p>
+<ul>
+<li>开始符号的Follow集初始化为{$}，其他非终结符的Follow集置为空</li>
+<li>重复下面的步骤直到所有非终结符的Follow集不发生变化<ul>
+<li>对每个非终结符的产生式（不含选择，有选择就拆分）A→X1X2…Xn进行下面的操作</li>
+<li>对每个非终结符Xi，将Xi后的串(Xi+1…Xn)的First集除去{ε}加入Xi的Follow集中</li>
+<li>如果串(Xi+1…Xn)的First集中包含空集，则将A的Follow集加入Xi的Follow集中</li>
+</ul>
+</li>
+</ul>
+<p><img src=".\CompilerPrinciple\38.png" alt=""></p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\39.png" alt=""></p>
+<p><strong>注意：</strong></p>
+<ul>
+<li>First集中没有$，Follow集中没有ε。</li>
+<li>First集是找产生式左侧非终结符的，Follow集是找产生式右侧非终结符的。</li>
+</ul>
+<h4 id="4-4-3-LL-1-文法"><a href="#4-4-3-LL-1-文法" class="headerlink" title="4.4.3 LL(1)文法"></a>4.4.3 LL(1)文法</h4><p>判断一个串是否符合某LL(1)文法，通常使用LL(1)分析方法。LL(1)分析方法需要用到LL(1)分析表，而LL(1)分析表可以通过First集和Follow集构造。</p>
+<p><strong>LL(1)分析表</strong></p>
+<p><img src=".\CompilerPrinciple\42.png" alt=""></p>
+<p>分析表中横向为所有的非终结符，$表示串结束符；纵向为所有终结符。</p>
+<p><strong>简单文法的LL(1)分析表构造：</strong></p>
+<p><img src=".\CompilerPrinciple\43.png" alt=""></p>
+<p>即如果A不能推出空集，则只考虑第一条；如果可以推出空集，那么观察S$经若干步推导后非终结符A可以出现在终结符a<strong>（包括$）</strong>的前面，则将对应的A→α填入[A,a]中。</p>
+<p><strong>一般文法的LL(1)分析表构造（采用First和Follow集）：</strong></p>
+<p><img src=".\CompilerPrinciple\45.png" alt=""></p>
+<p>注意是观察First(α)</p>
+<p><strong>LL(1)文法</strong></p>
+<p><img src=".\CompilerPrinciple\44.png" alt=""></p>
+<p>等价于：</p>
+<p><img src=".\CompilerPrinciple\46.png" alt=""></p>
+<p>LL(1)文法不允许一个格子包含两条产生式（即二义性），可以在表格标注采用一条产生式来消除二义性，使得文法能用LL(1)方法进行分析。</p>
+<h4 id="4-4-4-非递归的预测分析"><a href="#4-4-4-非递归的预测分析" class="headerlink" title="4.4.4 非递归的预测分析"></a>4.4.4 非递归的预测分析</h4><p><strong>LL(1)分析</strong></p>
+<p><img src=".\CompilerPrinciple\40.png" alt=""></p>
+<p><strong>LL(1)分析过程</strong></p>
+<p><img src=".\CompilerPrinciple\41.png" alt=""></p>
+<p>通常利用LL(1)分析表进行分析</p>
+<ul>
+<li>accept</li>
+</ul>
+<p>栈和输入都只剩下$代表串是该文法可以接受的串。</p>
+<ul>
+<li>error</li>
+</ul>
+<p>LL(1)出错：栈顶与输入不匹配；串空栈不空。</p>
+<p>示例：</p>
+<p><img src=".\CompilerPrinciple\50.png" alt=""></p>
+<h3 id="4-5-自底向上的语法分析"><a href="#4-5-自底向上的语法分析" class="headerlink" title="4.5 自底向上的语法分析"></a>4.5 自底向上的语法分析</h3><h3 id="4-6-LR语法分析技术介绍：简单LR技术"><a href="#4-6-LR语法分析技术介绍：简单LR技术" class="headerlink" title="4.6 LR语法分析技术介绍：简单LR技术"></a>4.6 LR语法分析技术介绍：简单LR技术</h3><h2 id="第五章-语法制导的翻译"><a href="#第五章-语法制导的翻译" class="headerlink" title="第五章 语法制导的翻译"></a>第五章 语法制导的翻译</h2><h3 id="5-1-语法制导定义"><a href="#5-1-语法制导定义" class="headerlink" title="5.1 语法制导定义"></a>5.1 语法制导定义</h3><h3 id="5-2-SDD的求值顺序"><a href="#5-2-SDD的求值顺序" class="headerlink" title="5.2 SDD的求值顺序"></a>5.2 SDD的求值顺序</h3><h3 id="5-3-语法制导翻译的应用"><a href="#5-3-语法制导翻译的应用" class="headerlink" title="5.3 语法制导翻译的应用"></a>5.3 语法制导翻译的应用</h3><h3 id="5-4-语法制导的翻译方案"><a href="#5-4-语法制导的翻译方案" class="headerlink" title="5.4 语法制导的翻译方案"></a>5.4 语法制导的翻译方案</h3><h3 id="5-5-实现L属性的SDD"><a href="#5-5-实现L属性的SDD" class="headerlink" title="5.5 实现L属性的SDD"></a>5.5 实现L属性的SDD</h3><h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h3 id="6-1-语法树的变体"><a href="#6-1-语法树的变体" class="headerlink" title="6.1 语法树的变体"></a>6.1 语法树的变体</h3><h3 id="6-2-三地址代码"><a href="#6-2-三地址代码" class="headerlink" title="6.2 三地址代码"></a>6.2 三地址代码</h3><h3 id="6-3-类型和声明"><a href="#6-3-类型和声明" class="headerlink" title="6.3 类型和声明"></a>6.3 类型和声明</h3><h3 id="6-4-表达式的翻译"><a href="#6-4-表达式的翻译" class="headerlink" title="6.4 表达式的翻译"></a>6.4 表达式的翻译</h3><h3 id="6-5-类型检查"><a href="#6-5-类型检查" class="headerlink" title="6.5 类型检查"></a>6.5 类型检查</h3><h3 id="6-6-控制流"><a href="#6-6-控制流" class="headerlink" title="6.6 控制流"></a>6.6 控制流</h3>
+                
+                <hr>
+                <!-- Pager -->
+                <ul class="pager">
+                    
+                    
+                    <li class="next">
+                        <a href="/2020/04/27/Database/" data-toggle="tooltip" data-placement="top" title="数据库系统概论笔记">Next Post &rarr;</a>
+                    </li>
+                    
+                </ul>
+
+                <!-- tip start -->
+                
+
+                
+                <div class="comment_notes">
+                    <p>
+                        This is copyright.
+                    </p>
+                </div>
+                
+                <!-- tip end -->
+
+                <!-- Music start-->
+                
+                
+
+<link rel="stylesheet" href="/css/music-player/fonts/iconfont.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/reset.css">
+
+
+<link rel="stylesheet" href="/css/music-player/css/player.css">
+
+
+
+<div class="music-player">
+    <audio class="music-player__audio" ></audio>
+    <div class="music-player__main">
+        <div class="music-player__blur"></div>
+        <div class="music-player__disc">
+            <div class="music-player__image">
+                <img width="100%" src="" alt="">
+            </div>
+            <div class="music-player__pointer"><img width="100%" src="/img/cd_tou.png" alt=""></div>
+        </div>
+        <div class="music-player__controls">
+            <div class="music__info">
+                <h3 class="music__info--title">...</h3>
+                <p class="music__info--singer">...</p>
+            </div>
+            <div class="player-control">
+                <div class="player-control__content">
+                    <div class="player-control__btns">
+                        <div class="player-control__btn player-control__btn--prev"><i class="iconfont icon-prev"></i></div>
+                        <div class="player-control__btn player-control__btn--play"><i class="iconfont icon-play"></i></div>
+                        <div class="player-control__btn player-control__btn--next"><i class="iconfont icon-next"></i></div>
+                        <div class="player-control__btn player-control__btn--mode"><i class="iconfont icon-loop"></i></div>
+                    </div>
+                    <div class="player-control__volume">
+                        <div class="control__volume--icon player-control__btn"><i class="iconfont icon-volume"></i></div>
+                        <div class="control__volume--progress player_progress"></div>
+                    </div>
+                </div>
+                <div class="player-control__content">
+                    <div class="player__song--progress player_progress"></div>
+                    <div class="player__song--timeProgess nowTime">00:00</div>
+                    <div class="player__song--timeProgess totalTime">00:00</div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+<script src="/js/music-player/utill.js"></script>
+
+
+<script src="/js/music-player/jquery.min.js"></script>
+
+
+<script src="/js/music-player/player.js"></script>
+
+
+                
+                <!-- Music end -->
+
+                <!-- Sharing -->
+                
+                <div class="social-share"  data-wechat-qrcode-helper="" align="center"></div>
+                <!--  css & js -->
+                <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/css/share.min.css">
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/social-share.js/1.0.16/js/social-share.min.js"></script>
+                
+                <!-- Sharing -->
+
+                <!-- gitment start -->
+                
+                <hr>
+                <div id="blog_comments"></div>
+<script src="https://cdn.bootcss.com/blueimp-md5/2.10.0/js/md5.js"></script>
+<!--
+<link rel="stylesheet" href="https://imsun.github.io/gitment/style/default.css">
+<script src="https://imsun.github.io/gitment/dist/gitment.browser.js"></script>
+-->
+<!--
+<link rel="stylesheet" href="/css/gitment.css">
+<script type="text/javascript" src="/js/gitment.js"></script>
+-->
+
+<script src="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/gitment.browser.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/theme-next/theme-next-gitment@1/default.css"/>
+
+<!--
+<link rel="stylesheet" href="https://billts.site/extra_css/gitment.css">
+<script src="https://billts.site/js/gitment.js"></script>
+-->
+
+<script>
+const myTheme = {
+  render(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'gitment-container gitment-root-container'
+    
+     // your custom component
+    container.appendChild(instance.renderSomething(state, instance))
+    
+    container.appendChild(instance.renderHeader(state, instance))
+    container.appendChild(instance.renderComments(state, instance))
+    container.appendChild(instance.renderEditor(state, instance))
+    //container.appendChild(instance.renderFooter(state, instance))
+    return container
+  },
+  renderSomething(state, instance) {
+    const container = document.createElement('div')
+    container.lang = "en-US"
+    container.className = 'hello_visitor'
+    if (state.user.login) {
+      container.innerText = `Hello ${state.user.login}, Welcome to comment system`
+    }
+    return container
+  }
+}
+
+
+const gitment = new Gitment({
+    id: md5("https://colin-jay.cn/2020/05/11/CompilerPrinciple/index.html"), // optional
+    owner: "Colin-Jay",
+    repo: "BlogsComment",
+    oauth: {
+      client_id: "e2631522580637e4cbcc",
+      client_secret: "783eac5c722387d050bba878099c8ab3c517beb1",
+    },
+    theme: myTheme,
+    // ...
+    // For more available options, check out the documentation below
+  })
+  
+  gitment.render('blog_comments')
+  // or
+  // gitment.render(document.getElementById('comments'))
+  // or
+  // document.body.appendChild(gitment.render())
+</script>
+                
+                <!-- gitment end -->
+
+                <!-- 来必力City版安装代码 -->
+                
+                <!-- City版安装代码已完成 -->
+
+                <!-- disqus comment start -->
+                
+                <!-- disqus comment end -->
+            </div>
+            
+            <!-- Tabe of Content -->
+            <!-- Table of Contents -->
+
+    
+      
+        <aside id="sidebar">
+          <div id="toc" class="toc-article">
+          <strong class="toc-title">Contents</strong>
+          
+            <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#编译原理笔记"><span class="toc-nav-number">1.</span> <span class="toc-nav-text">编译原理笔记</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第一章-引论"><span class="toc-nav-number">1.1.</span> <span class="toc-nav-text">第一章 引论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-1-语言处理器"><span class="toc-nav-number">1.1.1.</span> <span class="toc-nav-text">1.1 语言处理器</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#1-2-一个编译器的结构"><span class="toc-nav-number">1.1.2.</span> <span class="toc-nav-text">1.2 一个编译器的结构</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第二章-一个简单的语法制导翻译器"><span class="toc-nav-number">1.2.</span> <span class="toc-nav-text">第二章 一个简单的语法制导翻译器</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#2-7-符号表"><span class="toc-nav-number">1.2.1.</span> <span class="toc-nav-text">2.7 符号表</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-7-1-为每个作用域设置一个符号表"><span class="toc-nav-number">1.2.1.1.</span> <span class="toc-nav-text">2.7.1 为每个作用域设置一个符号表</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#2-7-2-符号表的使用"><span class="toc-nav-number">1.2.1.2.</span> <span class="toc-nav-text">2.7.2 符号表的使用</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第三章-词法分析"><span class="toc-nav-number">1.3.</span> <span class="toc-nav-text">第三章 词法分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-1-词法分析器的作用"><span class="toc-nav-number">1.3.1.</span> <span class="toc-nav-text">3.1  词法分析器的作用</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-1-词法分析及语法分析"><span class="toc-nav-number">1.3.1.1.</span> <span class="toc-nav-text">3.1.1 词法分析及语法分析</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-2-词法单元、模式和词素"><span class="toc-nav-number">1.3.1.2.</span> <span class="toc-nav-text">3.1.2 词法单元、模式和词素</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-3-词法单元的属性"><span class="toc-nav-number">1.3.1.3.</span> <span class="toc-nav-text">3.1.3 词法单元的属性</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-1-4-词法错误"><span class="toc-nav-number">1.3.1.4.</span> <span class="toc-nav-text">3.1.4 词法错误</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-2-输入缓冲"><span class="toc-nav-number">1.3.2.</span> <span class="toc-nav-text">3.2 输入缓冲</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-1-缓冲区对"><span class="toc-nav-number">1.3.2.1.</span> <span class="toc-nav-text">3.2.1 缓冲区对</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-2-2-哨兵标记"><span class="toc-nav-number">1.3.2.2.</span> <span class="toc-nav-text">3.2.2 哨兵标记</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-3-词法单元的规约"><span class="toc-nav-number">1.3.3.</span> <span class="toc-nav-text">3.3 词法单元的规约</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-1-串和语言"><span class="toc-nav-number">1.3.3.1.</span> <span class="toc-nav-text">3.3.1 串和语言</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-2-语言上的运算"><span class="toc-nav-number">1.3.3.2.</span> <span class="toc-nav-text">3.3.2 语言上的运算</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-3-正则表达式"><span class="toc-nav-number">1.3.3.3.</span> <span class="toc-nav-text">3.3.3 正则表达式</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-4-正则定义"><span class="toc-nav-number">1.3.3.4.</span> <span class="toc-nav-text">3.3.4 正则定义</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-3-5-正则表达式的扩展"><span class="toc-nav-number">1.3.3.5.</span> <span class="toc-nav-text">3.3.5 正则表达式的扩展</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-4-词法单元的识别"><span class="toc-nav-number">1.3.4.</span> <span class="toc-nav-text">3.4 词法单元的识别</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-4-1-状态转换图"><span class="toc-nav-number">1.3.4.1.</span> <span class="toc-nav-text">3.4.1 状态转换图</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-4-2-保留字和标识符的识别"><span class="toc-nav-number">1.3.4.2.</span> <span class="toc-nav-text">3.4.2 保留字和标识符的识别</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-4-4-基于状态转换图的词法分析器的体系结构"><span class="toc-nav-number">1.3.4.3.</span> <span class="toc-nav-text">3.4.4 基于状态转换图的词法分析器的体系结构</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-6-有穷自动机"><span class="toc-nav-number">1.3.5.</span> <span class="toc-nav-text">3.6 有穷自动机</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-6-1-不确定的有穷自动机"><span class="toc-nav-number">1.3.5.1.</span> <span class="toc-nav-text">3.6.1 不确定的有穷自动机</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-6-2-转换表"><span class="toc-nav-number">1.3.5.2.</span> <span class="toc-nav-text">3.6.2 转换表</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-6-3-自动机中输入字符串的接受"><span class="toc-nav-number">1.3.5.3.</span> <span class="toc-nav-text">3.6.3 自动机中输入字符串的接受</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-6-4-确定的有穷自动机"><span class="toc-nav-number">1.3.5.4.</span> <span class="toc-nav-text">3.6.4 确定的有穷自动机</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-7-从正则表达式到自动机"><span class="toc-nav-number">1.3.6.</span> <span class="toc-nav-text">3.7 从正则表达式到自动机</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-7-1-从NFA到DFA的转换"><span class="toc-nav-number">1.3.6.1.</span> <span class="toc-nav-text">3.7.1 从NFA到DFA的转换</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-7-2-NFA的模拟"><span class="toc-nav-number">1.3.6.2.</span> <span class="toc-nav-text">3.7.2 NFA的模拟</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-7-3-NFA模拟的效率"><span class="toc-nav-number">1.3.6.3.</span> <span class="toc-nav-text">3.7.3 NFA模拟的效率</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-7-4-从正则表达式构造NFA"><span class="toc-nav-number">1.3.6.4.</span> <span class="toc-nav-text">3.7.4 从正则表达式构造NFA</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#3-9-基于DFA的模式匹配器的优化"><span class="toc-nav-number">1.3.7.</span> <span class="toc-nav-text">3.9 基于DFA的模式匹配器的优化</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#3-9-6-最小化一个DFA的状态数"><span class="toc-nav-number">1.3.7.1.</span> <span class="toc-nav-text">3.9.6 最小化一个DFA的状态数</span></a></li></ol></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第四章-语法分析"><span class="toc-nav-number">1.4.</span> <span class="toc-nav-text">第四章 语法分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-1-引论"><span class="toc-nav-number">1.4.1.</span> <span class="toc-nav-text">4.1 引论</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-1-1-语法分析器的作用"><span class="toc-nav-number">1.4.1.1.</span> <span class="toc-nav-text">4.1.1 语法分析器的作用</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-2-上下无关文法"><span class="toc-nav-number">1.4.2.</span> <span class="toc-nav-text">4.2 上下无关文法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-1-上下无关文法的正式定义"><span class="toc-nav-number">1.4.2.1.</span> <span class="toc-nav-text">4.2.1 上下无关文法的正式定义</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-3-推导"><span class="toc-nav-number">1.4.2.2.</span> <span class="toc-nav-text">4.2.3 推导</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-4-语法分析树和推导"><span class="toc-nav-number">1.4.2.3.</span> <span class="toc-nav-text">4.2.4 语法分析树和推导</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-5-二义性"><span class="toc-nav-number">1.4.2.4.</span> <span class="toc-nav-text">4.2.5 二义性</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-2-7-上下文无关文法和正则表达式"><span class="toc-nav-number">1.4.2.5.</span> <span class="toc-nav-text">4.2.7 上下文无关文法和正则表达式</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-3-设计文法"><span class="toc-nav-number">1.4.3.</span> <span class="toc-nav-text">4.3 设计文法</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-1-词法分析和语法分析"><span class="toc-nav-number">1.4.3.1.</span> <span class="toc-nav-text">4.3.1 词法分析和语法分析</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-2-消除二义性"><span class="toc-nav-number">1.4.3.2.</span> <span class="toc-nav-text">4.3.2 消除二义性</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-3-左递归的消除"><span class="toc-nav-number">1.4.3.3.</span> <span class="toc-nav-text">4.3.3 左递归的消除</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-3-4-提取左公因子"><span class="toc-nav-number">1.4.3.4.</span> <span class="toc-nav-text">4.3.4 提取左公因子</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-4-自顶向下的语法分析"><span class="toc-nav-number">1.4.4.</span> <span class="toc-nav-text">4.4 自顶向下的语法分析</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-4-1-递归下降的语法分析"><span class="toc-nav-number">1.4.4.1.</span> <span class="toc-nav-text">4.4.1 递归下降的语法分析</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-4-2-FIRST和FOLLOW"><span class="toc-nav-number">1.4.4.2.</span> <span class="toc-nav-text">4.4.2 FIRST和FOLLOW</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-4-3-LL-1-文法"><span class="toc-nav-number">1.4.4.3.</span> <span class="toc-nav-text">4.4.3 LL(1)文法</span></a></li><li class="toc-nav-item toc-nav-level-4"><a class="toc-nav-link" href="#4-4-4-非递归的预测分析"><span class="toc-nav-number">1.4.4.4.</span> <span class="toc-nav-text">4.4.4 非递归的预测分析</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-5-自底向上的语法分析"><span class="toc-nav-number">1.4.5.</span> <span class="toc-nav-text">4.5 自底向上的语法分析</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#4-6-LR语法分析技术介绍：简单LR技术"><span class="toc-nav-number">1.4.6.</span> <span class="toc-nav-text">4.6 LR语法分析技术介绍：简单LR技术</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第五章-语法制导的翻译"><span class="toc-nav-number">1.5.</span> <span class="toc-nav-text">第五章 语法制导的翻译</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-1-语法制导定义"><span class="toc-nav-number">1.5.1.</span> <span class="toc-nav-text">5.1 语法制导定义</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-2-SDD的求值顺序"><span class="toc-nav-number">1.5.2.</span> <span class="toc-nav-text">5.2 SDD的求值顺序</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-3-语法制导翻译的应用"><span class="toc-nav-number">1.5.3.</span> <span class="toc-nav-text">5.3 语法制导翻译的应用</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-4-语法制导的翻译方案"><span class="toc-nav-number">1.5.4.</span> <span class="toc-nav-text">5.4 语法制导的翻译方案</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#5-5-实现L属性的SDD"><span class="toc-nav-number">1.5.5.</span> <span class="toc-nav-text">5.5 实现L属性的SDD</span></a></li></ol></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#第六章-中间代码生成"><span class="toc-nav-number">1.6.</span> <span class="toc-nav-text">第六章 中间代码生成</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-1-语法树的变体"><span class="toc-nav-number">1.6.1.</span> <span class="toc-nav-text">6.1 语法树的变体</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-2-三地址代码"><span class="toc-nav-number">1.6.2.</span> <span class="toc-nav-text">6.2 三地址代码</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-3-类型和声明"><span class="toc-nav-number">1.6.3.</span> <span class="toc-nav-text">6.3 类型和声明</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-4-表达式的翻译"><span class="toc-nav-number">1.6.4.</span> <span class="toc-nav-text">6.4 表达式的翻译</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-5-类型检查"><span class="toc-nav-number">1.6.5.</span> <span class="toc-nav-text">6.5 类型检查</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#6-6-控制流"><span class="toc-nav-number">1.6.6.</span> <span class="toc-nav-text">6.6 控制流</span></a></li></ol></li></ol></li></ol>
+          
+          </div>
+        </aside>
+      
+    
+
+                
+            <!-- Sidebar Container -->
+            <div class="
+                col-lg-8 col-lg-offset-2
+                col-md-10 col-md-offset-1
+                sidebar-container">
+
+                <!-- Featured Tags -->
+                
+                <section>
+                    <!-- no hr -->
+                    <h5><a href="/tags/">FEATURED TAGS</a></h5>
+                    <div class="tags">
+                       
+                          <a class="tag" href="/tags/#note" title="note">note</a>
+                        
+                          <a class="tag" href="/tags/#CompilerPrinciple" title="CompilerPrinciple">CompilerPrinciple</a>
+                        
+                    </div>
+                </section>
+                
+
+                <!-- Friends Blog -->
+                
+                <hr>
+                <h5>FRIENDS</h5>
+                <ul class="list-inline">
+
+                    
+                        <li><a href="#" target="_blank">Colin-Jay&#39;s Blog</a></li>
+                    
+                        <li><a href="https://joke-lin.top/" target="_blank">Joke-Lin&#39;s Blog</a></li>
+                    
+                        <li><a href="https://yez-liu.github.io/" target="_blank">YeZ-Liu&#39;s Blog</a></li>
+                    
+                        <li><a href="http://www.gatesma.cn/" target="_blank">GatesMa&#39;s Blog</a></li>
+                    
+                </ul>
+                
+            </div>
+        </div>
+    </div>
+</article>
+
+
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+<!-- anchor-js, Doc:http://bryanbraun.github.io/anchorjs/ -->
+<script>
+    async("https://cdn.bootcss.com/anchor-js/1.1.1/anchor.min.js",function(){
+        anchors.options = {
+          visible: 'hover',
+          placement: 'left',
+          icon: 'ℬ'
+        };
+        anchors.add().remove('.intro-header h1').remove('.subheading').remove('.sidebar-container h5');
+    })
+</script>
+
+
+<style  type="text/css">
+    /* place left on bigger screen */
+    @media all and (min-width: 800px) {
+        .anchorjs-link{
+            position: absolute;
+            left: -0.75em;
+            font-size: 1.1em;
+            margin-top : -0.1em;
+        }
+    }
+</style>
+
+
+
+    <!-- Footer -->
+    <!-- Footer -->
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                <ul class="list-inline text-center">
+
+                
+                    <li>
+                        <a target="_blank"  href="https://github.com/Colin-Jay">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://twitter.com/ColinJay16">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-twitter fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.facebook.com/colin.jay.1420">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa fa-facebook fa-stack-1x fa-inverse"></i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+                    <li>
+                        <a target="_blank" href="https://www.zhihu.com/people/ping-fan-de-jie-er">
+                            <span class="fa-stack fa-lg">
+                                <i class="fa fa-circle fa-stack-2x"></i>
+                                <i class="fa  fa-stack-1x fa-inverse">知</i>
+                            </span>
+                        </a>
+                    </li>
+                
+
+                
+
+                
+
+                
+
+                </ul>
+                <p class="copyright text-muted">
+                    Copyright &copy; Colin-Jay 2020 
+                    <br>
+                    Powered by 
+                    <a href="https://github.com/dusign/hexo-theme-snail" target="_blank" rel="noopener">
+                        <i>hexo-theme-snail</i>
+                    </a> | 
+                    <iframe name="star" style="margin-left: 2px; margin-bottom:-5px;" frameborder="0" scrolling="0"
+                        width="100px" height="20px"
+                        src="https://ghbtns.com/github-btn.html?user=dusign&repo=hexo-theme-snail&type=star&count=true">
+                    </iframe>
+                </p>
+            </div>
+        </div>
+    </div>
+
+</footer>
+
+<!-- jQuery -->
+
+<script src="/js/jquery.min.js"></script>
+
+
+<!-- Bootstrap Core JavaScript -->
+
+<script src="/js/bootstrap.min.js"></script>
+
+
+<!-- Custom Theme JavaScript -->
+
+<script src="/js/hux-blog.min.js"></script>
+
+
+<!-- Search -->
+
+<script src="/js/search.js"></script>
+
+
+<!-- async load function -->
+<script>
+    function async(u, c) {
+      var d = document, t = 'script',
+          o = d.createElement(t),
+          s = d.getElementsByTagName(t)[0];
+      o.src = u;
+      if (c) { o.addEventListener('load', function (e) { c(null, e); }, false); }
+      s.parentNode.insertBefore(o, s);
+    }
+</script>
+
+
+<!-- jquery.tagcloud.js -->
+<script>
+    // only load tagcloud.js in tag.html
+    if($('#tag_cloud').length !== 0){
+        async("https://Colin-Jay.cn/js/jquery.tagcloud.js",function(){
+            $.fn.tagcloud.defaults = {
+                //size: {start: 1, end: 1, unit: 'em'},
+                color: {start: '#bbbbee', end: '#0085a1'},
+            };
+            $('#tag_cloud a').tagcloud();
+        })
+    }
+</script>
+
+<!--fastClick.js -->
+<script>
+    async("https://cdn.bootcss.com/fastclick/1.0.6/fastclick.min.js", function(){
+        var $nav = document.querySelector("nav");
+        if($nav) FastClick.attach($nav);
+    })
+</script>
+
+
+<!-- Google Analytics -->
+
+
+<script>
+    // dynamic User by Hux
+    var _gaId = 'UA-XXXXXXXX-X';
+    var _gaDomain = 'yoursite';
+
+    // Originial
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', _gaId, _gaDomain);
+    ga('send', 'pageview');
+</script>
+
+
+
+
+<!-- Baidu Tongji -->
+
+
+<!-- Search -->
+
+    <script type="text/javascript">      
+        var search_path = "search.xml";
+        if (search_path.length == 0) {
+            search_path = "search.xml";
+        }
+    var path = "/" + search_path;
+    searchFunc(path, 'local-search-input', 'local-search-result');
+    </script>
+
+
+<!-- busuanzi -->
+<script async src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+
+
+
+	<a id="rocket" href="#top" class=""></a>
+	<script type="text/javascript" src="/js/totop.js?v=1.0.0" async=""></script>
+    <script type="text/javascript" src="/js/toc.js?v=1.0.0" async=""></script>
+
+    
+        <!-- background effects line -->
+        
+
+        
+            <script type="text/javascript" src="/js/mouse-click.js" content='[&#34;有志者，事竟成。&#34; ,&#34;道阻且长，任重道远。&#34; ,&#34;千里之行，始于足下。&#34; ,&#34;吾生也有涯，而知也无涯。&#34; ,&#34;岁寒，然后知松柏之后凋也。&#34; ,&#34;路漫漫其修远兮，吾将上下而求索。&#34; ,&#34;三更灯火五更鸡，正是男儿发愤时。&#34; ,&#34;莫愁前路无知己，天下谁人不识君。&#34; ,&#34;曾经沧海难为水，除却巫山不是云。&#34; ,&#34;山重水复疑无路，柳暗花明又一村。&#34;]' color='[&#34;rgb(238,44,44)&#34; ,&#34;rgb(255,69,0)&#34; ,&#34;rgb(255,165,0)&#34; ,&#34;rgb(255,215,0)&#34; ,&#34;rgb(188,238,104)&#34; ,&#34;rgb(78,238,148)&#34; ,&#34;rgb(135,206,235)&#34; ,&#34;rgb(65,105,225)&#34; ,&#34;rgb(148,0,211)&#34; ,&#34;rgb(240,255,240)&#34;]'></script>
+        
+
+        <!-- background effects end -->
+    
+
+    <!--<script size="50" alpha='0.3' zIndex="-999" src="/js/ribbonStatic.js"></script>-->
+    
+        <script src="/js/ribbonDynamic.js"></script>
+    
+</body>
+
+</html>

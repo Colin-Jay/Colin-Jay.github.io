@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://Colin-Jay.cn/2020/05/11/CompilerPrinciple/</loc>
+    <lastmod>2020-05-14</lastmod>
+  </url>  <url>
     <loc>https://Colin-Jay.cn/2020/02/15/PAT-AdvancedLevel1002/</loc>
     <lastmod>2020-05-12</lastmod>
   </url>  <url>
@@ -14,9 +17,6 @@
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://Colin-Jay.cn/2020/04/08/WeeklyPlan/</loc>
-    <lastmod>2020-05-11</lastmod>
-  </url>  <url>
-    <loc>https://Colin-Jay.cn/2020/05/11/CompilerPrinciple/</loc>
     <lastmod>2020-05-11</lastmod>
   </url>  <url>
     <loc>https://Colin-Jay.cn/2020/04/27/Database/</loc>

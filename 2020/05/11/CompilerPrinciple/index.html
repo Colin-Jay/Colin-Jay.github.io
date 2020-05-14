@@ -127,8 +127,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">4.8k</span> and
-                                Reading Time <span class="post-count">17</span> Minutes
+                                Words <span class="post-count">6.3k</span> and
+                                Reading Time <span class="post-count">22</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -609,7 +609,167 @@
 <p>LL(1)出错：栈顶与输入不匹配；串空栈不空。</p>
 <p>示例：</p>
 <p><img src=".\50.png" alt=""></p>
-<h3 id="4-5-自底向上的语法分析"><a href="#4-5-自底向上的语法分析" class="headerlink" title="4.5 自底向上的语法分析"></a>4.5 自底向上的语法分析</h3><h3 id="4-6-LR语法分析技术介绍：简单LR技术"><a href="#4-6-LR语法分析技术介绍：简单LR技术" class="headerlink" title="4.6 LR语法分析技术介绍：简单LR技术"></a>4.6 LR语法分析技术介绍：简单LR技术</h3><h2 id="第五章-语法制导的翻译"><a href="#第五章-语法制导的翻译" class="headerlink" title="第五章 语法制导的翻译"></a>第五章 语法制导的翻译</h2><h3 id="5-1-语法制导定义"><a href="#5-1-语法制导定义" class="headerlink" title="5.1 语法制导定义"></a>5.1 语法制导定义</h3><h3 id="5-2-SDD的求值顺序"><a href="#5-2-SDD的求值顺序" class="headerlink" title="5.2 SDD的求值顺序"></a>5.2 SDD的求值顺序</h3><h3 id="5-3-语法制导翻译的应用"><a href="#5-3-语法制导翻译的应用" class="headerlink" title="5.3 语法制导翻译的应用"></a>5.3 语法制导翻译的应用</h3><h3 id="5-4-语法制导的翻译方案"><a href="#5-4-语法制导的翻译方案" class="headerlink" title="5.4 语法制导的翻译方案"></a>5.4 语法制导的翻译方案</h3><h3 id="5-5-实现L属性的SDD"><a href="#5-5-实现L属性的SDD" class="headerlink" title="5.5 实现L属性的SDD"></a>5.5 实现L属性的SDD</h3><h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h3 id="6-1-语法树的变体"><a href="#6-1-语法树的变体" class="headerlink" title="6.1 语法树的变体"></a>6.1 语法树的变体</h3><h3 id="6-2-三地址代码"><a href="#6-2-三地址代码" class="headerlink" title="6.2 三地址代码"></a>6.2 三地址代码</h3><h3 id="6-3-类型和声明"><a href="#6-3-类型和声明" class="headerlink" title="6.3 类型和声明"></a>6.3 类型和声明</h3><h3 id="6-4-表达式的翻译"><a href="#6-4-表达式的翻译" class="headerlink" title="6.4 表达式的翻译"></a>6.4 表达式的翻译</h3><h3 id="6-5-类型检查"><a href="#6-5-类型检查" class="headerlink" title="6.5 类型检查"></a>6.5 类型检查</h3><h3 id="6-6-控制流"><a href="#6-6-控制流" class="headerlink" title="6.6 控制流"></a>6.6 控制流</h3>
+<h3 id="4-5-自底向上的语法分析"><a href="#4-5-自底向上的语法分析" class="headerlink" title="4.5 自底向上的语法分析"></a>4.5 自底向上的语法分析</h3><p><strong>自底向上的分析方法</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\81.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\82.png" alt="82"></p>
+<p>自底向上分析的四个动作：</p>
+<ul>
+<li>移进shift</li>
+<li>归约reduce</li>
+<li>接受accept</li>
+<li>报错error</li>
+</ul>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\83.png" alt="83"></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\84.png" alt="84"></p>
+<p><strong>句柄</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\85.png" alt="85"></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\86.png" alt="86"></p>
+<p>通过分析树找句柄：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\87.png" alt="87"></p>
+<p>用句柄来对句型进行归约：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\88.png" alt="88"></p>
+<p>归约过程就是依次找出分析树中的最左子树并去除叶子节点</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\89.png" alt="89"></p>
+<h3 id="4-6-LR语法分析技术介绍：简单LR技术"><a href="#4-6-LR语法分析技术介绍：简单LR技术" class="headerlink" title="4.6 LR语法分析技术介绍：简单LR技术"></a>4.6 LR语法分析技术介绍：简单LR技术</h3><p><strong>LR(0)项</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\90.png" alt="90"></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\91.png" alt="91"></p>
+<p>“.”表示当前分析时符号在栈还是在输入串的情况</p>
+<p>根据”.”位置的不同将LR(0)项分四类：</p>
+<ul>
+<li>归约项：”.”在右侧结尾，且”.”前面不是开始符号</li>
+<li>接受项：”.”在右侧结尾，且”.”前面是开始符号</li>
+<li>移进项：”.”后面是终结符</li>
+<li>待归约项：”.”后面是非终结符</li>
+</ul>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\92.png" alt="92"></p>
+<p><strong>LR(0)项的有限自动机</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\93.png" alt="93"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\94.png" alt="94"></p>
+<p>同时，还要有.X→X.的Goto连接</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\95.png" alt="95"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\96.png" alt="96"></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\97.png" alt="97"></p>
+<p>子集法构造DFA：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\98.png" alt="98"></p>
+<p>直接得到DFA：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\99.png" alt="99"></p>
+<p>总结</p>
+<p>由文法得到NFA的步骤：</p>
+<ul>
+<li>改写文法，得出所有的LR(0)项</li>
+<li>NFA的初始状态为S’→.S</li>
+<li>对于每个状态，判断”.”后面的符号<ul>
+<li>如果是终结符，则接受该终结符指向下一状态</li>
+<li>如果是非终结符S，则通过ε连接分别到达S→.α的所有状态，另外还要通过S的Goto连接到”.”在S后的状态</li>
+</ul>
+</li>
+<li>所有状态都不能再指向新状态时，即得到NFA</li>
+</ul>
+<p>NFA没用结束状态，由分析程序决定结束</p>
+<p>由文法得到DFA的两种方法：</p>
+<p>Ⅰ.构造NFA，由子集构造法得到DFA</p>
+<p>Ⅱ.不通过NFA，直接得到DFA：</p>
+<ul>
+<li>改写文法，得出所有的LR(0)项</li>
+<li>DFA的初始状态为S’→.S</li>
+<li>对于DFA中每个状态，若”.”后面是非终结符S，那么需要将S→.α的项都加进该状态</li>
+<li>通过接受”.”后面的符号，到达新的状态，立马对新状态用第三步</li>
+<li>所有状态都不能再指向新状态时，即得到DFA</li>
+</ul>
+<p>注意DFA中的状态需要指明包含的NFA状态（LR(0)项）</p>
+<p><strong>LR(0)分析算法</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\100.png" alt="100"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\101.png" alt="101"></p>
+<p>LR(0)文法不允许某个状态中同时包含移进项和归约项（移进-归约冲突），也不允许包含两个归约项（归约-归约冲突）。移进-移进并不会冲突，因为会先移进再根据移进的字符判断转向下一个状态。</p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\102.png" alt="102"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\103.png" alt="103"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\104.png" alt="104"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\105.png" alt="105"></p>
+<p>总结</p>
+<p>用LR(0)方法分析一个串是否是某文法可识别的串，步骤为：</p>
+<ul>
+<li>改写文法，得出所有LR(0)项，构造DFA</li>
+<li>通过DFA 构造分析表<ul>
+<li>State：DFA中的状态</li>
+<li>Action：DFA状态对应的动作（看其包含的LR(0)项）</li>
+<li>Rule：若动作为归约，则写出对应的产生式</li>
+<li>Input：包含所有的终结符</li>
+<li>Goto：包含产生式右侧所有的非终结符</li>
+<li>每行中一个状态对应一个动作<ul>
+<li>若动作是移进，则[State, Input]和[State, Goto]填入接受该字符后进入的状态（由DFA得出）</li>
+<li>若动作是归约，则[State, Rule]唯一对应了一条产生式</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>建表进行LR(0)分析<ul>
+<li>Steps：步骤</li>
+<li>Stack：栈，初始化为$和初始状态</li>
+<li>Input：输入串和$</li>
+<li>Action：栈顶状态对应的动作</li>
+</ul>
+</li>
+<li>通过分析表进行LR(0)分析<ul>
+<li>每一步，根据栈顶状态得到动作<ul>
+<li>若动作是移进（Goto连接也是），则在下一步将输入串最左侧的符号移入栈顶，并通过分析表得到移入后的状态，放入栈顶</li>
+<li>若动作是归约，则在下一步将归约串对应的符号和状态在栈顶都出栈，将产生式左侧的非终结符移入栈顶，并通过分析表得到移入后的状态，放入栈顶</li>
+</ul>
+</li>
+<li>若在某一步移入的串与栈顶状态不匹配，不能得到新的栈顶状态，则报错</li>
+<li>若栈为$和初始状态+开始符号，输入串为空串和$，则代表该串为该文法可以识别的串</li>
+</ul>
+</li>
+</ul>
+<p><strong>SLR(1)分析算法</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\106.png" alt="106"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\107.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\108.png" alt=""></p>
+<p>SLR(1)文法不允许某个状态中同时存在满足条件的移进项和归约项，也不允许同时存在满足条件的两个归约项。</p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\109.png" alt=""></p>
+<p>总结</p>
+<p>用LR(0)方法分析一个串是否是某文法可识别的串，步骤为：</p>
+<ul>
+<li>改写文法，得出所有LR(0)项，构造DFA</li>
+<li>通过DFA 构造分析表<ul>
+<li>State：DFA中的状态</li>
+<li>Input：包含所有的终结符和$</li>
+<li>Goto：包含产生式右侧所有的非终结符</li>
+<li>每个状态都根据DFA，对其所有LR(0)项进行判断：<ul>
+<li>移进项在对应终结符的格子中填入s和到达的状态</li>
+<li>归约项在对应Follow集的格子中填入r(产生式)，若产生式是开始符合推出，则填入accept</li>
+<li>Goto连接直接填入转换的状态即可</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>建表进行SLR(1)分析<ul>
+<li>Steps：步骤</li>
+<li>Stack：栈，初始化为$和初始状态</li>
+<li>Input：输入串和$</li>
+<li>Action：栈顶状态对应的动作</li>
+</ul>
+</li>
+<li>每一步，根据栈顶状态和输入串第一个符号得到动作<ul>
+<li>若动作是移进（Goto连接也是），则在下一步将输入串最左侧的符号移入栈顶，并通过分析表得到移入后的状态，放入栈顶</li>
+<li>若动作是归约，则在下一步将归约串对应的符号和状态在栈顶都出栈，将产生式左侧的非终结符移入栈顶，并通过分析表得到移入后的状态，放入栈顶</li>
+</ul>
+</li>
+<li>若在某一步移入的串与栈顶状态不匹配，不能得到新的栈顶状态，则报错</li>
+<li>若栈为$和初始状态+开始符号+某状态，输入串为空串和$，若在分析表中该状态和$对应的格子为accept，则代表该串为该文法可以识别的串</li>
+</ul>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\110.png" alt=""></p>
+<p>练习：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\111.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\112.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\113.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\114.png" alt=""></p>
+<h2 id="第五章-语法制导的翻译"><a href="#第五章-语法制导的翻译" class="headerlink" title="第五章 语法制导的翻译"></a>第五章 语法制导的翻译</h2><h3 id="5-1-语法制导定义"><a href="#5-1-语法制导定义" class="headerlink" title="5.1 语法制导定义"></a>5.1 语法制导定义</h3><h3 id="5-2-SDD的求值顺序"><a href="#5-2-SDD的求值顺序" class="headerlink" title="5.2 SDD的求值顺序"></a>5.2 SDD的求值顺序</h3><h3 id="5-3-语法制导翻译的应用"><a href="#5-3-语法制导翻译的应用" class="headerlink" title="5.3 语法制导翻译的应用"></a>5.3 语法制导翻译的应用</h3><h3 id="5-4-语法制导的翻译方案"><a href="#5-4-语法制导的翻译方案" class="headerlink" title="5.4 语法制导的翻译方案"></a>5.4 语法制导的翻译方案</h3><h3 id="5-5-实现L属性的SDD"><a href="#5-5-实现L属性的SDD" class="headerlink" title="5.5 实现L属性的SDD"></a>5.5 实现L属性的SDD</h3><h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h3 id="6-1-语法树的变体"><a href="#6-1-语法树的变体" class="headerlink" title="6.1 语法树的变体"></a>6.1 语法树的变体</h3><h3 id="6-2-三地址代码"><a href="#6-2-三地址代码" class="headerlink" title="6.2 三地址代码"></a>6.2 三地址代码</h3><h3 id="6-3-类型和声明"><a href="#6-3-类型和声明" class="headerlink" title="6.3 类型和声明"></a>6.3 类型和声明</h3><h3 id="6-4-表达式的翻译"><a href="#6-4-表达式的翻译" class="headerlink" title="6.4 表达式的翻译"></a>6.4 表达式的翻译</h3><h3 id="6-5-类型检查"><a href="#6-5-类型检查" class="headerlink" title="6.5 类型检查"></a>6.5 类型检查</h3><h3 id="6-6-控制流"><a href="#6-6-控制流" class="headerlink" title="6.6 控制流"></a>6.6 控制流</h3>
                 
                 <hr>
                 <!-- Pager -->

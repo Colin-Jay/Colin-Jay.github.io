@@ -8,8 +8,8 @@
     </url>
 
     <url>
-        <loc>https://Colin-Jay.cn/2020/03/21/ReviewPlan/</loc>
-        <lastmod>2020-05-17T14:13:19.453Z</lastmod>
+        <loc>https://Colin-Jay.cn/2020/05/18/PAT-BasicLevel1022/</loc>
+        <lastmod>2020-05-18T00:06:06.451Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 
@@ -17,7 +17,15 @@
 
     <url>
         <loc>https://Colin-Jay.cn/2020/04/08/WeeklyPlan/</loc>
-        <lastmod>2020-05-17T14:09:39.195Z</lastmod>
+        <lastmod>2020-05-17T16:06:51.181Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.6</priority>
+
+    </url>
+
+    <url>
+        <loc>https://Colin-Jay.cn/2020/03/21/ReviewPlan/</loc>
+        <lastmod>2020-05-17T14:13:19.453Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.6</priority>
 

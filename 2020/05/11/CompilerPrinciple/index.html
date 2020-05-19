@@ -127,8 +127,8 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">6.3k</span> and
-                                Reading Time <span class="post-count">22</span> Minutes
+                                Words <span class="post-count">6.5k</span> and
+                                Reading Time <span class="post-count">23</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -785,9 +785,63 @@
 <p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\122.png" alt=""></p>
 <p><strong>S属性的SDD</strong></p>
 <p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\123.png" alt=""></p>
+<p><strong>注释语法分析树</strong></p>
 <p>示例：</p>
 <p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\124.png" alt=""></p>
-<h3 id="5-2-SDD的求值顺序"><a href="#5-2-SDD的求值顺序" class="headerlink" title="5.2 SDD的求值顺序"></a>5.2 SDD的求值顺序</h3><h3 id="5-3-语法制导翻译的应用"><a href="#5-3-语法制导翻译的应用" class="headerlink" title="5.3 语法制导翻译的应用"></a>5.3 语法制导翻译的应用</h3><h3 id="5-4-语法制导的翻译方案"><a href="#5-4-语法制导的翻译方案" class="headerlink" title="5.4 语法制导的翻译方案"></a>5.4 语法制导的翻译方案</h3><h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h3 id="6-1-语法树的变体"><a href="#6-1-语法树的变体" class="headerlink" title="6.1 语法树的变体"></a>6.1 语法树的变体</h3><h3 id="6-2-三地址代码"><a href="#6-2-三地址代码" class="headerlink" title="6.2 三地址代码"></a>6.2 三地址代码</h3><h3 id="6-3-类型和声明"><a href="#6-3-类型和声明" class="headerlink" title="6.3 类型和声明"></a>6.3 类型和声明</h3><h3 id="6-4-表达式的翻译"><a href="#6-4-表达式的翻译" class="headerlink" title="6.4 表达式的翻译"></a>6.4 表达式的翻译</h3><h3 id="6-5-类型检查"><a href="#6-5-类型检查" class="headerlink" title="6.5 类型检查"></a>6.5 类型检查</h3><h3 id="6-6-控制流"><a href="#6-6-控制流" class="headerlink" title="6.6 控制流"></a>6.6 控制流</h3>
+<h3 id="5-2-SDD的求值顺序"><a href="#5-2-SDD的求值顺序" class="headerlink" title="5.2 SDD的求值顺序"></a>5.2 SDD的求值顺序</h3><p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\125.png" alt=""></p>
+<p><strong>依赖图</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\126.png" alt=""></p>
+<p>通常综合属性在文法符合右边，继承属性在文法符合左边，操作对应于虚节点</p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\127.png" alt=""></p>
+<p><strong>拓扑排序</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\128.png" alt=""></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\129.png" alt="129"></p>
+<p><strong>属性求值顺序</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\130.png" alt=""></p>
+<p>S属性的SDD</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\131.png" alt=""></p>
+<p>L属性的SDD</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\132.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\133.png" alt=""></p>
+<p>注：不形成环路</p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\134.png" alt=""></p>
+<h3 id="5-3-语法制导翻译的应用"><a href="#5-3-语法制导翻译的应用" class="headerlink" title="5.3 语法制导翻译的应用"></a>5.3 语法制导翻译的应用</h3><ul>
+<li>抽象语法树的构造</li>
+</ul>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\136.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\137.png" alt="137"></p>
+<ul>
+<li>类型的结构</li>
+</ul>
+<h3 id="5-4-语法制导的翻译方案"><a href="#5-4-语法制导的翻译方案" class="headerlink" title="5.4 语法制导的翻译方案"></a>5.4 语法制导的翻译方案</h3><p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\135.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\138.png" alt=""></p>
+<p><strong>后缀翻译方案</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\139.png" alt=""></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\140.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\141.png" alt="141"></p>
+<p><strong>产生式内部带有语义动作的SDT</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\142.png" alt=""></p>
+<p>插入动作的语法分析树</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\143.png" alt=""></p>
+<p><strong>将L-SDD转换为SDT</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\144.png" alt=""></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\145.png" alt="145"></p>
+<p><strong>L属性定义的SDT实现</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\146.png" alt=""></p>
+<p><strong>在递归下降语法分析过程中进行翻译</strong></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\147.png" alt=""></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\148.png" alt="148"></p>
+<p>示例：</p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\149.png" alt="149"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\150.png" alt="150"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\151.png" alt="151"></p>
+<p><img src="D:\ColinJay\source\_posts\CompilerPrinciple\152.png" alt="152"></p>
+<h2 id="第六章-中间代码生成"><a href="#第六章-中间代码生成" class="headerlink" title="第六章 中间代码生成"></a>第六章 中间代码生成</h2><h3 id="6-1-语法树的变体"><a href="#6-1-语法树的变体" class="headerlink" title="6.1 语法树的变体"></a>6.1 语法树的变体</h3><h3 id="6-2-三地址代码"><a href="#6-2-三地址代码" class="headerlink" title="6.2 三地址代码"></a>6.2 三地址代码</h3><h3 id="6-3-类型和声明"><a href="#6-3-类型和声明" class="headerlink" title="6.3 类型和声明"></a>6.3 类型和声明</h3><h3 id="6-4-表达式的翻译"><a href="#6-4-表达式的翻译" class="headerlink" title="6.4 表达式的翻译"></a>6.4 表达式的翻译</h3><h3 id="6-5-类型检查"><a href="#6-5-类型检查" class="headerlink" title="6.5 类型检查"></a>6.5 类型检查</h3><h3 id="6-6-控制流"><a href="#6-6-控制流" class="headerlink" title="6.6 控制流"></a>6.6 控制流</h3>
                 
                 <hr>
                 <!-- Pager -->

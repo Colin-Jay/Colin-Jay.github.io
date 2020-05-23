@@ -3,6 +3,13 @@
 
 
     <url>
+        <loc>https://colin-jay.cn/tags/post-graduate-entrance-examination/</loc>
+        <lastmod>2020-05-23T08:39:34.930Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://colin-jay.cn/tags/SoftwareEngineering/</loc>
         <lastmod>2020-05-22T04:44:44.954Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -26,13 +33,6 @@
     <url>
         <loc>https://colin-jay.cn/tags/pat/</loc>
         <lastmod>2020-05-18T14:40:18.804Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://colin-jay.cn/tags/post-graduate-entrance-examination/</loc>
-        <lastmod>2020-05-17T16:06:51.181Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

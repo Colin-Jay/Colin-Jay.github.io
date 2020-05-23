@@ -8,6 +8,13 @@
     </url>
 
     <url>
+        <loc>https://colin-jay.cn/categories/Plan/</loc>
+        <lastmod>2020-05-23T08:39:34.930Z</lastmod>
+        <changefreq>weekly</changefreq>
+        <priority>0.2</priority>
+    </url>
+
+    <url>
         <loc>https://colin-jay.cn/categories/SoftwareEngineering/</loc>
         <lastmod>2020-05-22T04:44:44.954Z</lastmod>
         <changefreq>weekly</changefreq>
@@ -31,13 +38,6 @@
     <url>
         <loc>https://colin-jay.cn/categories/Code/</loc>
         <lastmod>2020-05-18T14:40:18.804Z</lastmod>
-        <changefreq>weekly</changefreq>
-        <priority>0.2</priority>
-    </url>
-
-    <url>
-        <loc>https://colin-jay.cn/categories/Plan/</loc>
-        <lastmod>2020-05-17T16:06:51.181Z</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.2</priority>
     </url>

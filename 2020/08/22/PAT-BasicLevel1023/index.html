@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          【个人代码及思路】PAT乙级：1001 害死人不偿命的(3n+1)猜想 (15分) - Colin-Jay&#39;s Blogs
+          【个人代码及思路】PAT乙级：1023 组个最小数 (20分) - Colin-Jay&#39;s Blogs
         
     </title>
 
-    <link rel="canonical" href="https://Colin-Jay.cn/2020/05/16/PAT-BasicLevel1001/">
+    <link rel="canonical" href="https://Colin-Jay.cn/2020/08/22/PAT-BasicLevel1023/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -115,17 +115,17 @@
                               <a class="tag" href="/tags/#pat" title="pat">pat</a>
                             
                         </div>
-                        <h1>【个人代码及思路】PAT乙级：1001 害死人不偿命的(3n+1)猜想 (15分)</h1>
+                        <h1>【个人代码及思路】PAT乙级：1023 组个最小数 (20分)</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Colin-Jay on
-                            2020-05-16
+                            2020-08-22
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">345</span> and
+                                Words <span class="post-count">435</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -274,14 +274,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="PAT-Basic-Level-Practice"><a href="#PAT-Basic-Level-Practice" class="headerlink" title="PAT (Basic Level) Practice"></a>PAT (Basic Level) Practice</h1><h2 id="1001-害死人不偿命的-3n-1-猜想-15分"><a href="#1001-害死人不偿命的-3n-1-猜想-15分" class="headerlink" title="1001 害死人不偿命的(3n+1)猜想 (15分)"></a><a href="https://pintia.cn/problem-sets/994805260223102976/problems/994805325918486528" target="_blank" rel="noopener"><strong>1001</strong> <strong>害死人不偿命的(3n+1)猜想</strong> <strong>(15分)</strong></a></h2><p>卡拉兹(Callatz)猜想：</p>
-<p>对任何一个正整数 <em>n</em>，如果它是偶数，那么把它砍掉一半；如果它是奇数，那么把 (3<em>n</em>+1) 砍掉一半。这样一直反复砍下去，最后一定在某一步得到 <em>n</em>=1。卡拉兹在 1950 年的世界数学家大会上公布了这个猜想，传说当时耶鲁大学师生齐动员，拼命想证明这个貌似很傻很天真的命题，结果闹得学生们无心学业，一心只证 (3<em>n</em>+1)，以至于有人说这是一个阴谋，卡拉兹是在蓄意延缓美国数学界教学与科研的进展……</p>
-<p>我们今天的题目不是证明卡拉兹猜想，而是对给定的任一不超过 1000 的正整数 <em>n</em>，简单地数一下，需要多少步（砍几下）才能得到 <em>n</em>=1？</p>
-<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>每个测试输入包含 1 个测试用例，即给出正整数 <em>n</em> 的值。</p>
-<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>输出从 <em>n</em> 计算到 1 需要的步数。</p>
-<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">3</span><br></pre></td></tr></table></figure>
-<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">5</span><br></pre></td></tr></table></figure>
-<h3 id="个人代码"><a href="#个人代码" class="headerlink" title="个人代码:"></a>个人代码:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> n, <span class="built_in">step</span> = <span class="number">0</span>;</span><br><span class="line">    <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;n);</span><br><span class="line">    <span class="keyword">while</span>(n != <span class="number">1</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>(n % <span class="number">2</span> == <span class="number">0</span>) &#123;</span><br><span class="line">            n /= <span class="number">2</span>;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            n = (<span class="number">3</span> * n + <span class="number">1</span>) / <span class="number">2</span>;            </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">step</span>++;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"%d"</span>, <span class="built_in">step</span>);</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+                <h1 id="PAT-Basic-Level-Practice"><a href="#PAT-Basic-Level-Practice" class="headerlink" title="PAT (Basic Level) Practice"></a>PAT (Basic Level) Practice</h1><h2 id="1023-组个最小数-20分"><a href="#1023-组个最小数-20分" class="headerlink" title="1023 组个最小数 (20分)"></a><a href="https://pintia.cn/problem-sets/994805260223102976/problems/994805298269634560" target="_blank" rel="noopener">1023 组个最小数 (20分)</a></h2><p>给定数字 0-9 各若干个。你可以以任意顺序排列这些数字，但必须全部使用。目标是使得最后得到的数尽可能小（注意 0 不能做首位）。例如：给定两个 0，两个 1，三个 5，一个 8，我们得到的最小的数就是 10015558。</p>
+<p>现给定数字，请编写程序输出能够组成的最小的数。</p>
+<h3 id="输入格式："><a href="#输入格式：" class="headerlink" title="输入格式："></a>输入格式：</h3><p>输入在一行中给出 10 个非负整数，顺序表示我们拥有数字 0、数字 1、……数字 9 的个数。整数间用一个空格分隔。10 个数字的总个数不超过 50，且至少拥有 1 个非 0 的数字。</p>
+<h3 id="输出格式："><a href="#输出格式：" class="headerlink" title="输出格式："></a>输出格式：</h3><p>在一行中输出能够组成的最小的数。</p>
+<h3 id="输入样例："><a href="#输入样例：" class="headerlink" title="输入样例："></a>输入样例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">2 2 0 0 0 3 0 0 1 0</span><br></pre></td></tr></table></figure>
+<h3 id="输出样例："><a href="#输出样例：" class="headerlink" title="输出样例："></a>输出样例：</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">10015558</span><br></pre></td></tr></table></figure>
+<h3 id="个人代码"><a href="#个人代码" class="headerlink" title="个人代码:"></a>个人代码:</h3><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;algorithm&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// bool cmp(int a, int b) &#123;</span></span><br><span class="line"><span class="comment">//     return a &lt; b;</span></span><br><span class="line"><span class="comment">// &#125;</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">minNum</span><span class="params">(<span class="keyword">int</span> *num, <span class="keyword">int</span> sum)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> temp = <span class="number">0</span>;<span class="comment">//保存第一个不为0的数字的下标</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sum; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(num[i]) &#123;</span><br><span class="line">            temp = i;</span><br><span class="line">            <span class="built_in">printf</span>(<span class="string">"%d"</span>, num[i]);</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; sum; i++) &#123;</span><br><span class="line">        <span class="keyword">if</span>(i != temp)&#123;</span><br><span class="line">           <span class="built_in">printf</span>(<span class="string">"%d"</span>, num[i]);</span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">int</span> numCnt[<span class="number">10</span>], num[<span class="number">50</span>], sum = <span class="number">0</span>;<span class="comment">//分别代表每个数字的次数，将数字从小到大排序，数字的总个数</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">        <span class="built_in">scanf</span>(<span class="string">"%d"</span>, &amp;numCnt[i]);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = sum; (j - sum) &lt; numCnt[i]; j++) &#123;<span class="comment">//根据次数将每个数字依次保存到num中</span></span><br><span class="line">            num[j] = i;</span><br><span class="line">        &#125;</span><br><span class="line">        sum += numCnt[i];</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// for(int i = 0; i &lt; sum; i++) &#123; </span></span><br><span class="line">    <span class="comment">//     printf("num[%d]=%d\n", i, num[i]);</span></span><br><span class="line">    <span class="comment">// &#125;</span></span><br><span class="line">    <span class="comment">// sort(num, num+sum, cmp);</span></span><br><span class="line">    minNum(num, sum);</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h3 id="思路提示"><a href="#思路提示" class="headerlink" title="思路提示:"></a>思路提示:</h3><p>无</p>
 
                 
@@ -289,13 +288,9 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2020/05/17/PAT-BasicLevel1032/" data-toggle="tooltip" data-placement="top" title="【个人代码及思路】PAT乙级：1032 挖掘机技术哪家强 (20分)">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2020/05/11/CompilerPrinciple/" data-toggle="tooltip" data-placement="top" title="编译原理笔记">Next Post &rarr;</a>
+                        <a href="/2020/08/22/PAT-BasicLevel1020/" data-toggle="tooltip" data-placement="top" title="【个人代码及思路】PAT乙级：1020 月饼 (25分)">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -436,7 +431,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Sat May 16 2020 21:57:32 GMT+0800', // optional
+    id: 'Sat Aug 22 2020 21:02:13 GMT+0800', // optional
     owner: "Colin-Jay",
     repo: "BlogsComment",
     oauth: {
@@ -476,7 +471,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#PAT-Basic-Level-Practice"><span class="toc-nav-text">PAT (Basic Level) Practice</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1001-害死人不偿命的-3n-1-猜想-15分"><span class="toc-nav-text">1001 害死人不偿命的(3n+1)猜想 (15分)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输入格式："><span class="toc-nav-text">输入格式：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输出格式："><span class="toc-nav-text">输出格式：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输入样例："><span class="toc-nav-text">输入样例：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输出样例："><span class="toc-nav-text">输出样例：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#个人代码"><span class="toc-nav-text">个人代码:</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#思路提示"><span class="toc-nav-text">思路提示:</span></a></li></ol></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#PAT-Basic-Level-Practice"><span class="toc-nav-text">PAT (Basic Level) Practice</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1023-组个最小数-20分"><span class="toc-nav-text">1023 组个最小数 (20分)</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输入格式："><span class="toc-nav-text">输入格式：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输出格式："><span class="toc-nav-text">输出格式：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输入样例："><span class="toc-nav-text">输入样例：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#输出样例："><span class="toc-nav-text">输出样例：</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#个人代码"><span class="toc-nav-text">个人代码:</span></a></li><li class="toc-nav-item toc-nav-level-3"><a class="toc-nav-link" href="#思路提示"><span class="toc-nav-text">思路提示:</span></a></li></ol></li></ol></li></ol>
             
           
           </div>

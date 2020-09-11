@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>【C/C++全套入门攻略】C++：标准模板库(STL)用法介绍</title>
+      <link href="/2020/09/11/STL/"/>
+      <url>/2020/09/11/STL/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-：标准模板库-STL-用法介绍"><a href="#C-：标准模板库-STL-用法介绍" class="headerlink" title="C++：标准模板库(STL)用法介绍"></a>C++：标准模板库(STL)用法介绍</h1><p>相信很多人跟我一样，在没了解STL之前，听到这么高大上的名字，以为是一个很难触及的神秘知识。但其实，STL并没有想象中那么难。相反，STL十分简单。</p><p>那么，为什么我们要学习STL 呢？STL(Standard Template Library)即标准模板库，是C++高效的程序库。它是一个工具的存在，能帮助我们简化很多程序，免得我们自己去实现（比如变长数组、数组排序等等）。</p><p>所以，把STL当成一个美化你程序的工具来看待。本文参考并总结了晴神的算法笔记与刘神的紫书中的精华内容，并加入了自己的理解，以实用第一的目的来撰写此文。</p><p>请耐心往下看，一天时间足够你学完这些并且灵活运用STL了！</p><p>[TOC]</p><h2 id="【近期更新】"><a href="#【近期更新】" class="headerlink" title="【近期更新】"></a>【近期更新】</h2><h2 id="1-vector"><a href="#1-vector" class="headerlink" title="1. vector"></a>1. vector</h2><h2 id="2-set"><a href="#2-set" class="headerlink" title="2. set"></a>2. set</h2><h2 id="3-string"><a href="#3-string" class="headerlink" title="3. string"></a>3. string</h2><h2 id="4-map"><a href="#4-map" class="headerlink" title="4. map"></a>4. map</h2><h2 id="5-queue"><a href="#5-queue" class="headerlink" title="5. queue"></a>5. queue</h2><h2 id="6-priority-queue"><a href="#6-priority-queue" class="headerlink" title="6. priority_queue"></a>6. priority_queue</h2><h2 id="7-stack"><a href="#7-stack" class="headerlink" title="7. stack"></a>7. stack</h2><h2 id="8-pair"><a href="#8-pair" class="headerlink" title="8. pair"></a>8. pair</h2><h2 id="9-algorithm头文件下的常用函数"><a href="#9-algorithm头文件下的常用函数" class="headerlink" title="9. algorithm头文件下的常用函数"></a>9. algorithm头文件下的常用函数</h2>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【个人代码及思路】PAT甲级：1024 Palindromic Number (25分)</title>
       <link href="/2020/09/07/PAT-AdvancedLevel1024/"/>
       <url>/2020/09/07/PAT-AdvancedLevel1024/</url>

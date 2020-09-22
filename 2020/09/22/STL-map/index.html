@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector - Colin-Jay&#39;s Blogs
+          【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：map - Colin-Jay&#39;s Blogs
         
     </title>
 
-    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/21/STL-map/">
+    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/22/STL-map/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -117,17 +117,17 @@
                               <a class="tag" href="/tags/#C/C++" title="C/C++">C/C++</a>
                             
                         </div>
-                        <h1>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</h1>
+                        <h1>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：map</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Colin-Jay on
-                            2020-09-21
+                            2020-09-22
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">586</span> and
+                                Words <span class="post-count">666</span> and
                                 Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -276,55 +276,47 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p>
-<p>使用vector前需要添加：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p>
-<p><strong>一维数组</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
-<p>typename可以是任何基本类型，也可以是STL标准容器</p>
-<p><strong>二维数组</strong></p>
-<ul>
-<li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p>
-<ul>
-<li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p>
+                <p>[TOC]</p>
+<h1 id="C-标准模板库-STL-用法介绍：map"><a href="#C-标准模板库-STL-用法介绍：map" class="headerlink" title="C++标准模板库(STL)用法介绍：map"></a>C++标准模板库(STL)用法介绍：map</h1><p>map：映射，STL容器之一，可以将任何基本类型（包括STL容器）映射到任何基本类型（包括STL容器）。</p>
+<p>使用map前需要添加：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;map&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="1-map声明"><a href="#1-map声明" class="headerlink" title="1. map声明"></a>1. map声明</h2><p>map是一个模板类，所以使用前需要声明。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;typename1, typename2&gt; mp;</span><br></pre></td></tr></table></figure>
+<p>typename1, typename2可以是任何基本类型，也可以是STL标准容器</p>
+<p>typename1代表键的类型，typename2代表值的类型，这样便会构成键-值映射</p>
+<p>如果键值类型都是int，那么就相当于普通的int型数组</p>
+<p>注：如果是字符串做映射时，必须使用string，而不能用char数组（因为数组不能作为键值）</p>
+<h2 id="2-map访问"><a href="#2-map访问" class="headerlink" title="2. map访问"></a>2. map访问</h2><p>一般有两种访问map内元素的方法：通过下标或者map的迭代器</p>
 <p><strong>（1）通过下标访问</strong></p>
-<p>同访问数组，注意访问范围不要超出最后一个元素下标</p>
+<p>类似于访问数组，map通过键作为下标访问值，所以键值是<strong>唯一</strong>的</p>
 <p><strong>（2）通过迭代器访问</strong></p>
 <p>迭代器(iterator)理解为类似指针的东西，定义为：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
-<p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p>
-<p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p>
-<p>注：vi[i]与*(vi.begin() + i)等价。</p>
-<h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p>
-<p>push_back(x)用来在vector的后面添加新元素x</p>
-<p><strong>(2) pop_back()</strong></p>
-<p>pop_back()用来删除vector的尾元素</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">map</span>&lt;typename1, typename2&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+<p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，map只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。map的每个元素由键-值构成，于是使用it-&gt;first访问键，使用it-&gt;second访问值。map会以键的增序自动排序，类似于set。</p>
+<p>假设现在有一个map容器mp，那么，mp.begin()和mp.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p>
+<p>注：对于不是vector或string的容器，用*(it + i)访问失去了意义，但可用下标访问元素</p>
+<h2 id="3-map常用函数"><a href="#3-map常用函数" class="headerlink" title="3. map常用函数"></a>3. map常用函数</h2><p><strong>(1) find()</strong></p>
+<p>mp.find(key)用来返回键为key的映射的迭代器</p>
+<p><strong>(2) erase()</strong></p>
+<ul>
+<li><p>删除单个元素</p>
+<ul>
+<li>mp.erase(it)用来删除迭代器it处的映射</li>
+<li>mp.erase(key)用来删除键为key的映射</li>
+</ul>
+</li>
+<li><p>删除一个区间内的所有元素</p>
+<p>mp.erase(first, last)用来删除迭代器[first, last)内的所有元素</p>
+</li>
+</ul>
 <p><strong>(3) size()</strong></p>
-<p>size()用来获得vector中的元素个数</p>
+<p>size()用来获得map中映射的对数</p>
 <p><strong>(4) clear()</strong></p>
-<p>clear()用来将vector中的所有元素清空</p>
-<p><strong>(5) insert()</strong></p>
-<p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p>
-<p><strong>(6) erase()</strong></p>
-<ul>
-<li>删除单个元素</li>
-</ul>
-<p>erase(it)用来删除迭代器it处的元素</p>
-<ul>
-<li>删除一个区间内的所有元素</li>
-</ul>
-<p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p>
-<h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p>
-<p>将vector作为数组使用，在元素个数不确定的场合很方便</p>
-<p><strong>（2）用邻接表存储图</strong></p>
-<p>用vector实现邻接表比较方便</p>
+<p>clear()用来将map中的所有元素清空</p>
+<h2 id="4-map用途"><a href="#4-map用途" class="headerlink" title="4. map用途"></a>4. map用途</h2><p><strong>（1）字符串与整数之间的映射</strong></p>
+<p><strong>（2）当做bool数组</strong></p>
+<p>判断大整数或者其他类型数据是否存在</p>
+<p><strong>（3）字符串和字符串的映射</strong></p>
 <hr>
 <p>欢迎访问我的STL系列：</p>
 <p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>
@@ -335,12 +327,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/09/22/STL-set/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：set">&larr; Previous Post</a>
+                        <a href="/2020/09/22/STL-queue/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：queue">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2020/09/21/STL-pair/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">Next Post &rarr;</a>
+                        <a href="/2020/09/22/STL-string/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：string">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -481,7 +473,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Mon Sep 21 2020 08:15:23 GMT+0800', // optional
+    id: 'Tue Sep 22 2020 17:35:27 GMT+0800', // optional
     owner: "Colin-Jay",
     repo: "BlogsComment",
     oauth: {
@@ -521,7 +513,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：vector"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：vector</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector声明"><span class="toc-nav-text">vector声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector访问"><span class="toc-nav-text">vector访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector函数"><span class="toc-nav-text">vector函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector用途"><span class="toc-nav-text">vector用途</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：map"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：map</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-map声明"><span class="toc-nav-text">1. map声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-map访问"><span class="toc-nav-text">2. map访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-map常用函数"><span class="toc-nav-text">3. map常用函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-map用途"><span class="toc-nav-text">4. map用途</span></a></li></ol></li></ol>
             
           
           </div>

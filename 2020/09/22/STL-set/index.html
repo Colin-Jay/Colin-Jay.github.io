@@ -127,7 +127,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">534</span> and
+                                Words <span class="post-count">541</span> and
                                 Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -276,12 +276,13 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="C-标准模板库-STL-用法介绍：set"><a href="#C-标准模板库-STL-用法介绍：set" class="headerlink" title="C++标准模板库(STL)用法介绍：set"></a>C++标准模板库(STL)用法介绍：set</h1><p>set：集合，STL容器之一，可以理解成一个<strong>内部自动有序且不含重复元素</strong>的容器。</p>
+                <p>[TOC]</p>
+<h1 id="C-标准模板库-STL-用法介绍：set"><a href="#C-标准模板库-STL-用法介绍：set" class="headerlink" title="C++标准模板库(STL)用法介绍：set"></a>C++标准模板库(STL)用法介绍：set</h1><p>set：集合，STL容器之一，可以理解成一个<strong>内部自动有序且不含重复元素</strong>的容器。</p>
 <p>使用set前需要添加：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="set声明"><a href="#set声明" class="headerlink" title="set声明"></a>set声明</h2><p>set是一个模板类，所以使用前需要声明。</p>
+<h2 id="1-set声明"><a href="#1-set声明" class="headerlink" title="1. set声明"></a>1. set声明</h2><p>set是一个模板类，所以使用前需要声明。</p>
 <p><strong>定义</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt; st;</span><br></pre></td></tr></table></figure>
 <p>typename可以是任何基本类型，也可以是STL标准容器</p>
 <p><strong>二维</strong></p>
 <ul>
@@ -293,14 +294,14 @@
 <li>set数组<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="set访问"><a href="#set访问" class="headerlink" title="set访问"></a>set访问</h2><p>访问set内元素只能通过set的迭代器</p>
+<h2 id="2-set访问"><a href="#2-set访问" class="headerlink" title="2. set访问"></a>2. set访问</h2><p>访问set内元素只能通过set的迭代器</p>
 <p><strong>通过迭代器访问</strong></p>
 <p>迭代器(iterator)理解为类似指针的东西，定义为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
 <p>it是set\<typename\>::iterator类型的变量，<em>it用来访问set里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p>
 <p>假设现在有一个set容器st，那么，st.begin()和st.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p>
 <p>注：对于不是vector或string的容器，按下标访问包括*(it + i)，都失去了意义</p>
-<h2 id="set函数"><a href="#set函数" class="headerlink" title="set函数"></a>set函数</h2><p><strong>(1) insert()</strong></p>
+<h2 id="3-set常用函数"><a href="#3-set常用函数" class="headerlink" title="3. set常用函数"></a>3. set常用函数</h2><p><strong>(1) insert()</strong></p>
 <p>insert(x)用来在set的里面添加新元素x，并自动增序排列和去重</p>
 <p><strong>(2) find()</strong></p>
 <p>find(value)用来返回set中对应值为value的迭代器</p>
@@ -322,7 +323,7 @@
 <p>size()用来获得set中的元素个数</p>
 <p><strong>(5) clear()</strong></p>
 <p>clear()用来将set中的所有元素清空</p>
-<h2 id="set用途"><a href="#set用途" class="headerlink" title="set用途"></a>set用途</h2><p>set最重要的作用就是自动去重并按升序排序</p>
+<h2 id="4-set用途"><a href="#4-set用途" class="headerlink" title="4. set用途"></a>4. set用途</h2><p>set最重要的作用就是自动去重并按升序排序</p>
 <hr>
 <p>欢迎访问我的STL系列：</p>
 <p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>
@@ -332,9 +333,13 @@
                 <!-- Pager -->
                 <ul class="pager">
                     
+                    <li class="previous">
+                        <a href="/2020/09/22/STL-string/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：string">&larr; Previous Post</a>
+                    </li>
+                    
                     
                     <li class="next">
-                        <a href="/2020/09/21/STL-map/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">Next Post &rarr;</a>
+                        <a href="/2020/09/21/STL-pair/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -515,7 +520,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：set"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：set</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#set声明"><span class="toc-nav-text">set声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#set访问"><span class="toc-nav-text">set访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#set函数"><span class="toc-nav-text">set函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#set用途"><span class="toc-nav-text">set用途</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：set"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：set</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-set声明"><span class="toc-nav-text">1. set声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-set访问"><span class="toc-nav-text">2. set访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-set常用函数"><span class="toc-nav-text">3. set常用函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-set用途"><span class="toc-nav-text">4. set用途</span></a></li></ol></li></ol>
             
           
           </div>

@@ -127,7 +127,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">586</span> and
+                                Words <span class="post-count">594</span> and
                                 Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -276,10 +276,11 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p>
+                <p>[TOC]</p>
+<h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p>
 <p>使用vector前需要添加：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p>
+<h2 id="1-vector声明"><a href="#1-vector声明" class="headerlink" title="1. vector声明"></a>1. vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p>
 <p><strong>一维数组</strong></p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
 <p>typename可以是任何基本类型，也可以是STL标准容器</p>
@@ -293,16 +294,16 @@
 <li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
-<h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p>
+<h2 id="2-vector访问"><a href="#2-vector访问" class="headerlink" title="2. vector访问"></a>2. vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p>
 <p><strong>（1）通过下标访问</strong></p>
 <p>同访问数组，注意访问范围不要超出最后一个元素下标</p>
 <p><strong>（2）通过迭代器访问</strong></p>
 <p>迭代器(iterator)理解为类似指针的东西，定义为：</p>
 <figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
-<p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p>
+<p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，vector既可以通过迭代器的自增迭代去访问元素，也支持\</em>(it + i)的访问方式。</p>
 <p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p>
 <p>注：vi[i]与*(vi.begin() + i)等价。</p>
-<h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p>
+<h2 id="3-vector常用函数"><a href="#3-vector常用函数" class="headerlink" title="3. vector常用函数"></a>3. vector常用函数</h2><p><strong>(1) push_back()</strong></p>
 <p>push_back(x)用来在vector的后面添加新元素x</p>
 <p><strong>(2) pop_back()</strong></p>
 <p>pop_back()用来删除vector的尾元素</p>
@@ -321,7 +322,7 @@
 <li>删除一个区间内的所有元素</li>
 </ul>
 <p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p>
-<h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p>
+<h2 id="4-vector用途"><a href="#4-vector用途" class="headerlink" title="4. vector用途"></a>4. vector用途</h2><p><strong>（1）储存数据</strong></p>
 <p>将vector作为数组使用，在元素个数不确定的场合很方便</p>
 <p><strong>（2）用邻接表存储图</strong></p>
 <p>用vector实现邻接表比较方便</p>
@@ -335,12 +336,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/09/21/STL-map/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">&larr; Previous Post</a>
+                        <a href="/2020/09/22/STL-set/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：set">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2020/09/21/STL-priority-queue/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">Next Post &rarr;</a>
+                        <a href="/2020/09/21/STL-vector/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -521,7 +522,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：vector"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：vector</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector声明"><span class="toc-nav-text">vector声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector访问"><span class="toc-nav-text">vector访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector函数"><span class="toc-nav-text">vector函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector用途"><span class="toc-nav-text">vector用途</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：vector"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：vector</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-vector声明"><span class="toc-nav-text">1. vector声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-vector访问"><span class="toc-nav-text">2. vector访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-vector常用函数"><span class="toc-nav-text">3. vector常用函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-vector用途"><span class="toc-nav-text">4. vector用途</span></a></li></ol></li></ol>
             
           
           </div>

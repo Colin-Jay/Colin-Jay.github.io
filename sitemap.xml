@@ -2,6 +2,62 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://colin-jay.cn/2020/09/22/STL-set/</loc>
+    
+    <lastmod>2020-09-22T04:56:14.433Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://colin-jay.cn/2020/09/21/STL-map/</loc>
+    
+    <lastmod>2020-09-22T04:40:17.968Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://colin-jay.cn/2020/09/21/STL-pair/</loc>
+    
+    <lastmod>2020-09-22T04:40:10.670Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://colin-jay.cn/2020/09/21/STL-queue/</loc>
+    
+    <lastmod>2020-09-22T04:40:02.492Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://colin-jay.cn/2020/09/21/STL-priority-queue/</loc>
+    
+    <lastmod>2020-09-22T04:39:45.852Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://colin-jay.cn/2020/09/21/STL-string/</loc>
+    
+    <lastmod>2020-09-22T04:39:36.565Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://colin-jay.cn/2020/09/21/STL-vector/</loc>
+    
+    <lastmod>2020-09-22T04:39:28.047Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>https://colin-jay.cn/2020/09/11/STL-Catalog/</loc>
+    
+    <lastmod>2020-09-22T02:37:51.925Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>https://colin-jay.cn/2020/04/08/WeeklyPlan/</loc>
     
     <lastmod>2020-09-13T17:37:32.922Z</lastmod>
@@ -19,13 +75,6 @@
     <loc>https://colin-jay.cn/2020/09/13/PAT-AdvancedLevel1023/</loc>
     
     <lastmod>2020-09-13T12:41:35.630Z</lastmod>
-    
-  </url>
-  
-  <url>
-    <loc>https://colin-jay.cn/2020/09/11/STL/</loc>
-    
-    <lastmod>2020-09-11T14:13:17.317Z</lastmod>
     
   </url>
   

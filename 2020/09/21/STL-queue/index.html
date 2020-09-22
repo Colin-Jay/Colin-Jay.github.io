@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          【C/C++全套入门攻略】C++：标准模板库(STL)用法介绍 - Colin-Jay&#39;s Blogs
+          【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector - Colin-Jay&#39;s Blogs
         
     </title>
 
-    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/11/STL/">
+    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/21/STL-queue/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -117,18 +117,18 @@
                               <a class="tag" href="/tags/#C/C++" title="C/C++">C/C++</a>
                             
                         </div>
-                        <h1>【C/C++全套入门攻略】C++：标准模板库(STL)用法介绍</h1>
+                        <h1>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Colin-Jay on
-                            2020-09-11
+                            2020-09-21
                         </span>
 
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">259</span> and
-                                Reading Time <span class="post-count">1</span> Minutes
+                                Words <span class="post-count">586</span> and
+                                Reading Time <span class="post-count">2</span> Minutes
                             </span>
                             <div class="blank_box"></div>
                             <!-- 不蒜子统计 start -->
@@ -276,24 +276,71 @@
                 col-md-10 col-md-offset-1
                 post-container">
 
-                <h1 id="C-：标准模板库-STL-用法介绍"><a href="#C-：标准模板库-STL-用法介绍" class="headerlink" title="C++：标准模板库(STL)用法介绍"></a>C++：标准模板库(STL)用法介绍</h1><p>相信很多人跟我一样，在没了解STL之前，听到这么高大上的名字，以为是一个很难触及的神秘知识。但其实，STL并没有想象中那么难。相反，STL十分简单。</p>
-<p>那么，为什么我们要学习STL 呢？STL(Standard Template Library)即标准模板库，是C++高效的程序库。它是一个工具的存在，能帮助我们简化很多程序，免得我们自己去实现（比如变长数组、数组排序等等）。</p>
-<p>所以，把STL当成一个美化你程序的工具来看待。本文参考并总结了晴神的算法笔记与刘神的紫书中的精华内容，并加入了自己的理解，以实用第一的目的来撰写此文。</p>
-<p>请耐心往下看，一天时间足够你学完这些并且灵活运用STL了！</p>
-<p>[TOC]</p>
-<h2 id="【近期更新】"><a href="#【近期更新】" class="headerlink" title="【近期更新】"></a>【近期更新】</h2><h2 id="1-vector"><a href="#1-vector" class="headerlink" title="1. vector"></a>1. vector</h2><h2 id="2-set"><a href="#2-set" class="headerlink" title="2. set"></a>2. set</h2><h2 id="3-string"><a href="#3-string" class="headerlink" title="3. string"></a>3. string</h2><h2 id="4-map"><a href="#4-map" class="headerlink" title="4. map"></a>4. map</h2><h2 id="5-queue"><a href="#5-queue" class="headerlink" title="5. queue"></a>5. queue</h2><h2 id="6-priority-queue"><a href="#6-priority-queue" class="headerlink" title="6. priority_queue"></a>6. priority_queue</h2><h2 id="7-stack"><a href="#7-stack" class="headerlink" title="7. stack"></a>7. stack</h2><h2 id="8-pair"><a href="#8-pair" class="headerlink" title="8. pair"></a>8. pair</h2><h2 id="9-algorithm头文件下的常用函数"><a href="#9-algorithm头文件下的常用函数" class="headerlink" title="9. algorithm头文件下的常用函数"></a>9. algorithm头文件下的常用函数</h2>
+                <h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p>
+<p>使用vector前需要添加：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p>
+<p><strong>一维数组</strong></p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure>
+<p>typename可以是任何基本类型，也可以是STL标准容器</p>
+<p><strong>二维数组</strong></p>
+<ul>
+<li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p>
+<ul>
+<li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p>
+<p><strong>（1）通过下标访问</strong></p>
+<p>同访问数组，注意访问范围不要超出最后一个元素下标</p>
+<p><strong>（2）通过迭代器访问</strong></p>
+<p>迭代器(iterator)理解为类似指针的东西，定义为：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure>
+<p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p>
+<p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p>
+<p>注：vi[i]与*(vi.begin() + i)等价。</p>
+<h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p>
+<p>push_back(x)用来在vector的后面添加新元素x</p>
+<p><strong>(2) pop_back()</strong></p>
+<p>pop_back()用来删除vector的尾元素</p>
+<p><strong>(3) size()</strong></p>
+<p>size()用来获得vector中的元素个数</p>
+<p><strong>(4) clear()</strong></p>
+<p>clear()用来将vector中的所有元素清空</p>
+<p><strong>(5) insert()</strong></p>
+<p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p>
+<p><strong>(6) erase()</strong></p>
+<ul>
+<li>删除单个元素</li>
+</ul>
+<p>erase(it)用来删除迭代器it处的元素</p>
+<ul>
+<li>删除一个区间内的所有元素</li>
+</ul>
+<p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p>
+<h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p>
+<p>将vector作为数组使用，在元素个数不确定的场合很方便</p>
+<p><strong>（2）用邻接表存储图</strong></p>
+<p>用vector实现邻接表比较方便</p>
+<hr>
+<p>欢迎访问我的STL系列：</p>
+<p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>
+
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/09/13/PAT-AdvancedLevel1023/" data-toggle="tooltip" data-placement="top" title="【个人代码及思路】PAT甲级：1023 Have Fun with Numbers (20分)">&larr; Previous Post</a>
+                        <a href="/2020/09/21/STL-priority-queue/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2020/09/07/PAT-AdvancedLevel1024/" data-toggle="tooltip" data-placement="top" title="【个人代码及思路】PAT甲级：1024 Palindromic Number (25分)">Next Post &rarr;</a>
+                        <a href="/2020/09/21/STL-string/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -434,7 +481,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Fri Sep 11 2020 21:29:27 GMT+0800', // optional
+    id: 'Mon Sep 21 2020 08:15:23 GMT+0800', // optional
     owner: "Colin-Jay",
     repo: "BlogsComment",
     oauth: {
@@ -474,7 +521,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-：标准模板库-STL-用法介绍"><span class="toc-nav-text">C++：标准模板库(STL)用法介绍</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#【近期更新】"><span class="toc-nav-text">【近期更新】</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-vector"><span class="toc-nav-text">1. vector</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-set"><span class="toc-nav-text">2. set</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-string"><span class="toc-nav-text">3. string</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-map"><span class="toc-nav-text">4. map</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-queue"><span class="toc-nav-text">5. queue</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-priority-queue"><span class="toc-nav-text">6. priority_queue</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-stack"><span class="toc-nav-text">7. stack</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-pair"><span class="toc-nav-text">8. pair</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#9-algorithm头文件下的常用函数"><span class="toc-nav-text">9. algorithm头文件下的常用函数</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：vector"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：vector</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector声明"><span class="toc-nav-text">vector声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector访问"><span class="toc-nav-text">vector访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector函数"><span class="toc-nav-text">vector函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#vector用途"><span class="toc-nav-text">vector用途</span></a></li></ol></li></ol>
             
           
           </div>

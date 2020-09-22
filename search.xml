@@ -4,6 +4,195 @@
   
     
     <entry>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：set</title>
+      <link href="/2020/09/22/STL-set/"/>
+      <url>/2020/09/22/STL-set/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：set"><a href="#C-标准模板库-STL-用法介绍：set" class="headerlink" title="C++标准模板库(STL)用法介绍：set"></a>C++标准模板库(STL)用法介绍：set</h1><p>set：集合，STL容器之一，可以理解成一个<strong>内部自动有序且不含重复元素</strong>的容器。</p><p>使用set前需要添加：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;set&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure><h2 id="set声明"><a href="#set声明" class="headerlink" title="set声明"></a>set声明</h2><p>set是一个模板类，所以使用前需要声明。</p><p><strong>定义</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure><p>typename可以是任何基本类型，也可以是STL标准容器</p><p><strong>二维</strong></p><ul><li>两个维都是容器<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure></li></ul><p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p><ul><li>set数组<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure></li></ul><h2 id="set访问"><a href="#set访问" class="headerlink" title="set访问"></a>set访问</h2><p>访问set内元素只能通过set的迭代器</p><p><strong>通过迭代器访问</strong></p><p>迭代器(iterator)理解为类似指针的东西，定义为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">set</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure><p>it是set\<typename\>::iterator类型的变量，<em>it用来访问set里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p><p>假设现在有一个set容器st，那么，st.begin()和st.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p><p>注：对于不是vector或string的容器，按下标访问包括*(it + i)，都失去了意义</p><h2 id="set函数"><a href="#set函数" class="headerlink" title="set函数"></a>set函数</h2><p><strong>(1) insert()</strong></p><p>insert(x)用来在set的里面添加新元素x，并自动增序排列和去重</p><p><strong>(2) find()</strong></p><p>find(value)用来返回set中对应值为value的迭代器</p><p><strong>(3) erase()</strong></p><ul><li><p>删除单个元素</p><ul><li><p>erase(it)用来删除迭代器it处的元素，可以结合find函数使用</p></li><li><p>erase(value)用来直接删除值为value的元素</p></li></ul></li><li><p>删除一个区间内的所有元素</p><p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p></li></ul><p><strong>(4) size()</strong></p><p>size()用来获得set中的元素个数</p><p><strong>(5) clear()</strong></p><p>clear()用来将set中的所有元素清空</p><h2 id="set用途"><a href="#set用途" class="headerlink" title="set用途"></a>set用途</h2><p>set最重要的作用就是自动去重并按升序排序</p><hr><p>欢迎访问我的STL系列：</p><p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</title>
+      <link href="/2020/09/21/STL-map/"/>
+      <url>/2020/09/21/STL-map/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p><p>使用vector前需要添加：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure><h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p><p><strong>一维数组</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure><p>typename可以是任何基本类型，也可以是STL标准容器</p><p><strong>二维数组</strong></p><ul><li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure></li></ul><p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p><ul><li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure></li></ul><h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p><p><strong>（1）通过下标访问</strong></p><p>同访问数组，注意访问范围不要超出最后一个元素下标</p><p><strong>（2）通过迭代器访问</strong></p><p>迭代器(iterator)理解为类似指针的东西，定义为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure><p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p><p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p><p>注：vi[i]与*(vi.begin() + i)等价。</p><h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p><p>push_back(x)用来在vector的后面添加新元素x</p><p><strong>(2) pop_back()</strong></p><p>pop_back()用来删除vector的尾元素</p><p><strong>(3) size()</strong></p><p>size()用来获得vector中的元素个数</p><p><strong>(4) clear()</strong></p><p>clear()用来将vector中的所有元素清空</p><p><strong>(5) insert()</strong></p><p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p><p><strong>(6) erase()</strong></p><ul><li>删除单个元素</li></ul><p>erase(it)用来删除迭代器it处的元素</p><ul><li>删除一个区间内的所有元素</li></ul><p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p><h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p><p>将vector作为数组使用，在元素个数不确定的场合很方便</p><p><strong>（2）用邻接表存储图</strong></p><p>用vector实现邻接表比较方便</p><hr><p>欢迎访问我的STL系列：</p><p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</title>
+      <link href="/2020/09/21/STL-pair/"/>
+      <url>/2020/09/21/STL-pair/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p><p>使用vector前需要添加：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure><h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p><p><strong>一维数组</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure><p>typename可以是任何基本类型，也可以是STL标准容器</p><p><strong>二维数组</strong></p><ul><li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure></li></ul><p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p><ul><li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure></li></ul><h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p><p><strong>（1）通过下标访问</strong></p><p>同访问数组，注意访问范围不要超出最后一个元素下标</p><p><strong>（2）通过迭代器访问</strong></p><p>迭代器(iterator)理解为类似指针的东西，定义为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure><p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p><p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p><p>注：vi[i]与*(vi.begin() + i)等价。</p><h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p><p>push_back(x)用来在vector的后面添加新元素x</p><p><strong>(2) pop_back()</strong></p><p>pop_back()用来删除vector的尾元素</p><p><strong>(3) size()</strong></p><p>size()用来获得vector中的元素个数</p><p><strong>(4) clear()</strong></p><p>clear()用来将vector中的所有元素清空</p><p><strong>(5) insert()</strong></p><p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p><p><strong>(6) erase()</strong></p><ul><li>删除单个元素</li></ul><p>erase(it)用来删除迭代器it处的元素</p><ul><li>删除一个区间内的所有元素</li></ul><p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p><h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p><p>将vector作为数组使用，在元素个数不确定的场合很方便</p><p><strong>（2）用邻接表存储图</strong></p><p>用vector实现邻接表比较方便</p><hr><p>欢迎访问我的STL系列：</p><p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</title>
+      <link href="/2020/09/21/STL-priority-queue/"/>
+      <url>/2020/09/21/STL-priority-queue/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p><p>使用vector前需要添加：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure><h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p><p><strong>一维数组</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure><p>typename可以是任何基本类型，也可以是STL标准容器</p><p><strong>二维数组</strong></p><ul><li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure></li></ul><p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p><ul><li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure></li></ul><h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p><p><strong>（1）通过下标访问</strong></p><p>同访问数组，注意访问范围不要超出最后一个元素下标</p><p><strong>（2）通过迭代器访问</strong></p><p>迭代器(iterator)理解为类似指针的东西，定义为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure><p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p><p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p><p>注：vi[i]与*(vi.begin() + i)等价。</p><h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p><p>push_back(x)用来在vector的后面添加新元素x</p><p><strong>(2) pop_back()</strong></p><p>pop_back()用来删除vector的尾元素</p><p><strong>(3) size()</strong></p><p>size()用来获得vector中的元素个数</p><p><strong>(4) clear()</strong></p><p>clear()用来将vector中的所有元素清空</p><p><strong>(5) insert()</strong></p><p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p><p><strong>(6) erase()</strong></p><ul><li>删除单个元素</li></ul><p>erase(it)用来删除迭代器it处的元素</p><ul><li>删除一个区间内的所有元素</li></ul><p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p><h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p><p>将vector作为数组使用，在元素个数不确定的场合很方便</p><p><strong>（2）用邻接表存储图</strong></p><p>用vector实现邻接表比较方便</p><hr><p>欢迎访问我的STL系列：</p><p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</title>
+      <link href="/2020/09/21/STL-queue/"/>
+      <url>/2020/09/21/STL-queue/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p><p>使用vector前需要添加：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure><h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p><p><strong>一维数组</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure><p>typename可以是任何基本类型，也可以是STL标准容器</p><p><strong>二维数组</strong></p><ul><li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure></li></ul><p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p><ul><li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure></li></ul><h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p><p><strong>（1）通过下标访问</strong></p><p>同访问数组，注意访问范围不要超出最后一个元素下标</p><p><strong>（2）通过迭代器访问</strong></p><p>迭代器(iterator)理解为类似指针的东西，定义为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure><p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，set只能通过迭代器的自增迭代去访问元素，不支持\</em>(it + i)的访问方式。</p><p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p><p>注：vi[i]与*(vi.begin() + i)等价。</p><h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p><p>push_back(x)用来在vector的后面添加新元素x</p><p><strong>(2) pop_back()</strong></p><p>pop_back()用来删除vector的尾元素</p><p><strong>(3) size()</strong></p><p>size()用来获得vector中的元素个数</p><p><strong>(4) clear()</strong></p><p>clear()用来将vector中的所有元素清空</p><p><strong>(5) insert()</strong></p><p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p><p><strong>(6) erase()</strong></p><ul><li>删除单个元素</li></ul><p>erase(it)用来删除迭代器it处的元素</p><ul><li>删除一个区间内的所有元素</li></ul><p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p><h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p><p>将vector作为数组使用，在元素个数不确定的场合很方便</p><p><strong>（2）用邻接表存储图</strong></p><p>用vector实现邻接表比较方便</p><hr><p>欢迎访问我的STL系列：</p><p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</title>
+      <link href="/2020/09/21/STL-string/"/>
+      <url>/2020/09/21/STL-string/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p><p>使用vector前需要添加：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure><h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p><p><strong>一维数组</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure><p>typename可以是任何基本类型，也可以是STL标准容器</p><p><strong>二维数组</strong></p><ul><li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure></li></ul><p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p><ul><li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure></li></ul><h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p><p><strong>（1）通过下标访问</strong></p><p>同访问数组，注意访问范围不要超出最后一个元素下标</p><p><strong>（2）通过迭代器访问</strong></p><p>迭代器(iterator)理解为类似指针的东西，定义为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure><p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，string既可以通过迭代器的自增迭代去访问元素，也支持\</em>(it + i)的访问方式。</p><p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p><p>注：vi[i]与*(vi.begin() + i)等价。</p><h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p><p>push_back(x)用来在vector的后面添加新元素x</p><p><strong>(2) pop_back()</strong></p><p>pop_back()用来删除vector的尾元素</p><p><strong>(3) size()</strong></p><p>size()用来获得vector中的元素个数</p><p><strong>(4) clear()</strong></p><p>clear()用来将vector中的所有元素清空</p><p><strong>(5) insert()</strong></p><p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p><p><strong>(6) erase()</strong></p><ul><li>删除单个元素</li></ul><p>erase(it)用来删除迭代器it处的元素</p><ul><li>删除一个区间内的所有元素</li></ul><p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p><h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p><p>将vector作为数组使用，在元素个数不确定的场合很方便</p><p><strong>（2）用邻接表存储图</strong></p><p>用vector实现邻接表比较方便</p><hr><p>欢迎访问我的STL系列：</p><p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</title>
+      <link href="/2020/09/21/STL-vector/"/>
+      <url>/2020/09/21/STL-vector/</url>
+      
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：vector"><a href="#C-标准模板库-STL-用法介绍：vector" class="headerlink" title="C++标准模板库(STL)用法介绍：vector"></a>C++标准模板库(STL)用法介绍：vector</h1><p>vector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。</p><p>使用vector前需要添加：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure><h2 id="vector声明"><a href="#vector声明" class="headerlink" title="vector声明"></a>vector声明</h2><p>vector是一个模板类，所以使用前需要声明。用变长数组来理解它：</p><p><strong>一维数组</strong></p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; name;</span><br></pre></td></tr></table></figure><p>typename可以是任何基本类型，也可以是STL标准容器</p><p><strong>二维数组</strong></p><ul><li>两个维数都可变长<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; &gt; name;</span><br></pre></td></tr></table></figure></li></ul><p>注：&gt;&gt;之间需要加空格，否则可能会被判定为右移操作</p><ul><li>第一维定长，第二维可变<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt; Arrayname[arraySize];</span><br></pre></td></tr></table></figure></li></ul><h2 id="vector访问"><a href="#vector访问" class="headerlink" title="vector访问"></a>vector访问</h2><p>一般有两种访问vector内元素的方法：通过下标或者vector的迭代器</p><p><strong>（1）通过下标访问</strong></p><p>同访问数组，注意访问范围不要超出最后一个元素下标</p><p><strong>（2）通过迭代器访问</strong></p><p>迭代器(iterator)理解为类似指针的东西，定义为：</p><figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">typename</span>&gt;::iterator it;</span><br></pre></td></tr></table></figure><p>it是vector\<typename\>::iterator类型的变量，<em>it用来访问vector里的元素。迭代器都支持支持自增自减，但只有vector和string支持加减整数的操作。因此，vector既可以通过迭代器的自增迭代去访问元素，也支持\</em>(it + i)的访问方式。</p><p>假设现在有一个vector容器vi，那么，vi.begin()和vi.end()标志着迭代器的开头（首元素的地址）和结尾（尾元素地址的下一个地址）。</p><p>注：vi[i]与*(vi.begin() + i)等价。</p><h2 id="vector函数"><a href="#vector函数" class="headerlink" title="vector函数"></a>vector函数</h2><p><strong>(1) push_back()</strong></p><p>push_back(x)用来在vector的后面添加新元素x</p><p><strong>(2) pop_back()</strong></p><p>pop_back()用来删除vector的尾元素</p><p><strong>(3) size()</strong></p><p>size()用来获得vector中的元素个数</p><p><strong>(4) clear()</strong></p><p>clear()用来将vector中的所有元素清空</p><p><strong>(5) insert()</strong></p><p>insert(it, x)用来向vector的迭代器it处插入一个元素x</p><p><strong>(6) erase()</strong></p><ul><li>删除单个元素</li></ul><p>erase(it)用来删除迭代器it处的元素</p><ul><li>删除一个区间内的所有元素</li></ul><p>erase(first, last)用来删除迭代器[first, last)内的所有元素</p><h2 id="vector用途"><a href="#vector用途" class="headerlink" title="vector用途"></a>vector用途</h2><p><strong>（1）储存数据</strong></p><p>将vector作为数组使用，在元素个数不确定的场合很方便</p><p><strong>（2）用邻接表存储图</strong></p><p>用vector实现邻接表比较方便</p><hr><p>欢迎访问我的STL系列：</p><p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> C/C++ </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> note </tag>
+            
+            <tag> C/C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>【个人代码及思路】PAT甲级：1023 Have Fun with Numbers (20分)</title>
       <link href="/2020/09/13/PAT-AdvancedLevel1023/"/>
       <url>/2020/09/13/PAT-AdvancedLevel1023/</url>
@@ -31,11 +220,11 @@
     
     
     <entry>
-      <title>【C/C++全套入门攻略】C++：标准模板库(STL)用法介绍</title>
-      <link href="/2020/09/11/STL/"/>
-      <url>/2020/09/11/STL/</url>
+      <title>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：目录</title>
+      <link href="/2020/09/11/STL-Catalog/"/>
+      <url>/2020/09/11/STL-Catalog/</url>
       
-        <content type="html"><![CDATA[<h1 id="C-：标准模板库-STL-用法介绍"><a href="#C-：标准模板库-STL-用法介绍" class="headerlink" title="C++：标准模板库(STL)用法介绍"></a>C++：标准模板库(STL)用法介绍</h1><p>相信很多人跟我一样，在没了解STL之前，听到这么高大上的名字，以为是一个很难触及的神秘知识。但其实，STL并没有想象中那么难。相反，STL十分简单。</p><p>那么，为什么我们要学习STL 呢？STL(Standard Template Library)即标准模板库，是C++高效的程序库。它是一个工具的存在，能帮助我们简化很多程序，免得我们自己去实现（比如变长数组、数组排序等等）。</p><p>所以，把STL当成一个美化你程序的工具来看待。本文参考并总结了晴神的算法笔记与刘神的紫书中的精华内容，并加入了自己的理解，以实用第一的目的来撰写此文。</p><p>请耐心往下看，一天时间足够你学完这些并且灵活运用STL了！</p><p>[TOC]</p><h2 id="【近期更新】"><a href="#【近期更新】" class="headerlink" title="【近期更新】"></a>【近期更新】</h2><h2 id="1-vector"><a href="#1-vector" class="headerlink" title="1. vector"></a>1. vector</h2><h2 id="2-set"><a href="#2-set" class="headerlink" title="2. set"></a>2. set</h2><h2 id="3-string"><a href="#3-string" class="headerlink" title="3. string"></a>3. string</h2><h2 id="4-map"><a href="#4-map" class="headerlink" title="4. map"></a>4. map</h2><h2 id="5-queue"><a href="#5-queue" class="headerlink" title="5. queue"></a>5. queue</h2><h2 id="6-priority-queue"><a href="#6-priority-queue" class="headerlink" title="6. priority_queue"></a>6. priority_queue</h2><h2 id="7-stack"><a href="#7-stack" class="headerlink" title="7. stack"></a>7. stack</h2><h2 id="8-pair"><a href="#8-pair" class="headerlink" title="8. pair"></a>8. pair</h2><h2 id="9-algorithm头文件下的常用函数"><a href="#9-algorithm头文件下的常用函数" class="headerlink" title="9. algorithm头文件下的常用函数"></a>9. algorithm头文件下的常用函数</h2>]]></content>
+        <content type="html"><![CDATA[<h1 id="C-标准模板库-STL-用法介绍：目录"><a href="#C-标准模板库-STL-用法介绍：目录" class="headerlink" title="C++标准模板库(STL)用法介绍：目录"></a>C++标准模板库(STL)用法介绍：目录</h1><p>相信很多人跟我一样，在没了解STL之前，听到这么高大上的名字，以为是一个很难触及的神秘知识。但其实，STL并没有想象中那么难。相反，STL十分简单。</p><p>那么，为什么我们要学习STL 呢？STL(Standard Template Library)即标准模板库，是C++高效的程序库。它是一个工具的存在，能帮助我们简化很多程序，免得我们自己去实现（比如变长数组、数组排序等等）。</p><p>所以，把STL当成一个美化你程序的工具来看待。本文参考并总结了晴神的算法笔记与刘神的紫书中的精华内容，并加入了自己的理解，以实用第一的目的来撰写此文。</p><p>请耐心往下看，一天时间足够你学完这些并且灵活运用STL了！</p><p>[TOC]</p><h2 id="【近期更新】"><a href="#【近期更新】" class="headerlink" title="【近期更新】"></a>【近期更新】</h2><h2 id="1-vector-向量（变长数组）"><a href="#1-vector-向量（变长数组）" class="headerlink" title="1. vector 向量（变长数组）"></a>1. vector 向量（变长数组）</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</p><h2 id="2-set-集合"><a href="#2-set-集合" class="headerlink" title="2. set 集合"></a>2. set 集合</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：set</p><h2 id="3-string-字符串"><a href="#3-string-字符串" class="headerlink" title="3. string 字符串"></a>3. string 字符串</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：string</p><h2 id="4-map-映射"><a href="#4-map-映射" class="headerlink" title="4. map 映射"></a>4. map 映射</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：map</p><h2 id="5-queue-队列"><a href="#5-queue-队列" class="headerlink" title="5. queue 队列"></a>5. queue 队列</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：queue</p><h2 id="6-priority-queue-优先队列"><a href="#6-priority-queue-优先队列" class="headerlink" title="6. priority_queue 优先队列"></a>6. priority_queue 优先队列</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：priority_queue</p><h2 id="7-stack-栈"><a href="#7-stack-栈" class="headerlink" title="7. stack 栈"></a>7. stack 栈</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：stack</p><h2 id="8-pair"><a href="#8-pair" class="headerlink" title="8. pair"></a>8. pair</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：pair</p><h2 id="9-algorithm头文件下的常用函数"><a href="#9-algorithm头文件下的常用函数" class="headerlink" title="9. algorithm头文件下的常用函数"></a>9. algorithm头文件下的常用函数</h2>]]></content>
       
       
       <categories>

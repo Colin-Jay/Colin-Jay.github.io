@@ -437,6 +437,8 @@
 
     
 
+    
+
 
 
 <!-- Main Content -->
@@ -445,7 +447,87 @@
 
         <div class="post-preview">
 
-            <a href="/2020/09/22/STL-priority-queue/">
+            <a href="/2020/09/23/STL-pair/">
+                <h2 class="post-title">
+                    【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：pair
+                </h2>
+                <h3 class="post-subtitle">
+                    
+                </h3>
+                <div class="post-content-preview">
+                    [TOC]
+C++标准模板库(STL)用法介绍：pairpair：可以看作是一个内部有两个元素的结构体，STL容器之一，可以将两个任何基本类型（包括STL容器）绑在一起而不用定义结构体。
+使用pair前需要添加：
+123#include &lt;utility&gt;using namespace std;
+注：由于map的内部实现中涉及pair，因此可以用map头文件来代替utility
+......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by Colin-Jay on
+                    2020-09-23
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#note" title="note">note</a>
+                    
+                      <a href="/tags/#C/C++" title="C/C++">C/C++</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2020/09/23/STL-stack/">
+                <h2 class="post-title">
+                    【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：stack
+                </h2>
+                <h3 class="post-subtitle">
+                    
+                </h3>
+                <div class="post-content-preview">
+                    [TOC]
+C++标准模板库(STL)用法介绍：stackstack：栈，在STL中主要则是实现了一个后进先出的容器。
+使用stack前需要添加：
+123#include &lt;stack&gt;using namespace std;
+1. stack声明stack是一个模板类，所以使用前需要声明。
+声明
+1stack&lt;typename&gt; st;
+typename可以是任何基......
+                </div>
+            </a>
+            
+                <p class="post-meta" style="margin: 10px 0;">
+                    Posted by Colin-Jay on
+                    2020-09-23
+                </p>
+                <div class="tags">
+                    
+                      <a href="/tags/#note" title="note">note</a>
+                    
+                      <a href="/tags/#C/C++" title="C/C++">C/C++</a>
+                    
+                </div>
+            
+
+        </div>
+        <hr>
+
+    
+
+    
+
+        <div class="post-preview">
+
+            <a href="/2020/09/23/STL-priority-queue/">
                 <h2 class="post-title">
                     【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：priority_queue
                 </h2>
@@ -457,13 +539,14 @@
 C++标准模板库(STL)用法介绍：priority_queuepriority_queue：优先队列，STL容器之一，底层基于堆进行实现。
 使用priority_queue前需要添加：
 123#include &lt;queue&gt;using namespace std;
-1. priority_queue声明vector是一个模板类，所以使用前需要声明。用变长数组来理解它......
+1. priority_queue声明priority_queue是一个模板类，所以使用前需要声明。
+......
                 </div>
             </a>
             
                 <p class="post-meta" style="margin: 10px 0;">
                     Posted by Colin-Jay on
-                    2020-09-22
+                    2020-09-23
                 </p>
                 <div class="tags">
                     
@@ -646,46 +729,6 @@ typename可以是任何基本类型......
 
         <div class="post-preview">
 
-            <a href="/2020/09/21/STL-pair/">
-                <h2 class="post-title">
-                    【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector
-                </h2>
-                <h3 class="post-subtitle">
-                    
-                </h3>
-                <div class="post-content-preview">
-                    [TOC]
-C++标准模板库(STL)用法介绍：vectorvector：向量，STL容器之一，可以理解成一个封装了多种操作变长数组。
-使用vector前需要添加：
-123#include &lt;vector&gt;using namespace std;
-1. vector声明vector是一个模板类，所以使用前需要声明。用变长数组来理解它：
-一维数组
-1vector&lt;typena......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by Colin-Jay on
-                    2020-09-21
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#note" title="note">note</a>
-                    
-                      <a href="/tags/#C/C++" title="C/C++">C/C++</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
-    
-
-        <div class="post-preview">
-
             <a href="/2020/09/21/STL-vector/">
                 <h2 class="post-title">
                     【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector
@@ -790,38 +833,6 @@ C++标准模板库(STL)用法介绍：目录相信很多人跟我一样，在没
 
     
 
-    
-
-        <div class="post-preview">
-
-            <a href="/2020/09/07/PAT-AdvancedLevel1024/">
-                <h2 class="post-title">
-                    【个人代码及思路】PAT甲级：1024 Palindromic Number (25分)
-                </h2>
-                <h3 class="post-subtitle">
-                    
-                </h3>
-                <div class="post-content-preview">
-                    PAT (Advanced Level) Practice1024 Palindromic Number (25分)A number that will be the same when it is written forwards or backwards is known as a Palindromic Number. For example, 1234321 is a palindr......
-                </div>
-            </a>
-            
-                <p class="post-meta" style="margin: 10px 0;">
-                    Posted by Colin-Jay on
-                    2020-09-07
-                </p>
-                <div class="tags">
-                    
-                      <a href="/tags/#pat" title="pat">pat</a>
-                    
-                </div>
-            
-
-        </div>
-        <hr>
-
-    
-
 
 
 <!-- Pager -->
@@ -889,7 +900,7 @@ C++标准模板库(STL)用法介绍：目录相信很多人跟我一样，在没
             
         
             
-            <a href="/tags/#note" title="note" rel="11">note</a>
+            <a href="/tags/#note" title="note" rel="12">note</a>
             
         
             
@@ -899,7 +910,7 @@ C++标准模板库(STL)用法介绍：目录相信很多人跟我一样，在没
             
         
             
-            <a href="/tags/#C/C++" title="C/C++" rel="8">C/C++</a>
+            <a href="/tags/#C/C++" title="C/C++" rel="9">C/C++</a>
             
         
     </div>
@@ -998,7 +1009,15 @@ C++标准模板库(STL)用法介绍：目录相信很多人跟我一样，在没
     <ul>
       
         <li>
-          <a href="/2020/09/22/STL-priority-queue/">【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：priority_queue</a>
+          <a href="/2020/09/23/STL-pair/">【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：pair</a>
+        </li>
+      
+        <li>
+          <a href="/2020/09/23/STL-stack/">【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：stack</a>
+        </li>
+      
+        <li>
+          <a href="/2020/09/23/STL-priority-queue/">【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：priority_queue</a>
         </li>
       
         <li>
@@ -1007,14 +1026,6 @@ C++标准模板库(STL)用法介绍：目录相信很多人跟我一样，在没
       
         <li>
           <a href="/2020/09/22/STL-map/">【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：map</a>
-        </li>
-      
-        <li>
-          <a href="/2020/09/22/STL-string/">【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：string</a>
-        </li>
-      
-        <li>
-          <a href="/2020/09/22/STL-set/">【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：set</a>
         </li>
       
     </ul>
@@ -1043,7 +1054,7 @@ C++标准模板库(STL)用法介绍：目录相信很多人跟我一样，在没
         
     <h5>ARCHIVES</h5>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">14</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/09/">September 2020</a><span class="archive-list-count">15</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/08/">August 2020</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a><span class="archive-list-count">7</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/03/">March 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/02/">February 2020</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/01/">January 2020</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/11/">November 2019</a><span class="archive-list-count">1</span></li></ul>
     </div>
 
         <hr>

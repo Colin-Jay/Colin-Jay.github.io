@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：目录 - Colin-Jay&#39;s Blogs
+          【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：pair - Colin-Jay&#39;s Blogs
         
     </title>
 
-    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/11/STL-Catalog/">
+    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/23/STL-pair/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -117,11 +117,11 @@
                               <a class="tag" href="/tags/#C/C++" title="C/C++">C/C++</a>
                             
                         </div>
-                        <h1>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：目录</h1>
+                        <h1>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：pair</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Colin-Jay on
-                            2020-09-11
+                            2020-09-23
                         </span>
 
                         
@@ -277,31 +277,34 @@
                 post-container">
 
                 <p>[TOC]</p>
-<h1 id="C-标准模板库-STL-用法介绍：目录"><a href="#C-标准模板库-STL-用法介绍：目录" class="headerlink" title="C++标准模板库(STL)用法介绍：目录"></a>C++标准模板库(STL)用法介绍：目录</h1><p>相信很多人跟我一样，在没了解STL之前，听到这么高大上的名字，以为是一个很难触及的神秘知识。但其实，STL并没有想象中那么难。相反，STL十分简单。</p>
-<p>那么，为什么我们要学习STL 呢？STL(Standard Template Library)即标准模板库，是C++高效的程序库。它是一个工具的存在，能帮助我们简化很多程序，免得我们自己去实现（比如变长数组、数组排序等等）。</p>
-<p>所以，把STL当成一个美化你程序的工具来看待。本文参考并总结了晴神的《算法笔记》与刘神的《算法竞赛入门经典》中的精华内容，并加入了自己的理解，以实用第一的目的来撰写此文。</p>
-<p>请耐心往下看，一天时间足够你学完这些并且灵活运用STL了！</p>
-<h2 id="1-vector-向量（变长数组）"><a href="#1-vector-向量（变长数组）" class="headerlink" title="1. vector 向量（变长数组）"></a>1. vector 向量（变长数组）</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：vector</p>
-<h2 id="2-set-集合"><a href="#2-set-集合" class="headerlink" title="2. set 集合"></a>2. set 集合</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：set</p>
-<h2 id="3-string-字符串"><a href="#3-string-字符串" class="headerlink" title="3. string 字符串"></a>3. string 字符串</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：string</p>
-<h2 id="4-map-映射"><a href="#4-map-映射" class="headerlink" title="4. map 映射"></a>4. map 映射</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：map</p>
-<h2 id="5-queue-队列"><a href="#5-queue-队列" class="headerlink" title="5. queue 队列"></a>5. queue 队列</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：queue</p>
-<h2 id="6-priority-queue-优先队列"><a href="#6-priority-queue-优先队列" class="headerlink" title="6. priority_queue 优先队列"></a>6. priority_queue 优先队列</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：priority_queue</p>
-<h2 id="7-stack-栈"><a href="#7-stack-栈" class="headerlink" title="7. stack 栈"></a>7. stack 栈</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：stack</p>
-<h2 id="8-pair"><a href="#8-pair" class="headerlink" title="8. pair"></a>8. pair</h2><p>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：pair</p>
+<h1 id="C-标准模板库-STL-用法介绍：pair"><a href="#C-标准模板库-STL-用法介绍：pair" class="headerlink" title="C++标准模板库(STL)用法介绍：pair"></a>C++标准模板库(STL)用法介绍：pair</h1><p>pair：可以看作是一个内部有两个元素的结构体，STL容器之一，可以将两个任何基本类型（包括STL容器）绑在一起而不用定义结构体。</p>
+<p>使用pair前需要添加：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;utility&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
+<p>注：由于map的内部实现中涉及pair，因此可以用map头文件来代替utility</p>
+<h2 id="1-pair声明"><a href="#1-pair声明" class="headerlink" title="1. pair声明"></a>1. pair声明</h2><p>pair是一个模板类，所以使用前需要声明。</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//声明</span></span><br><span class="line">pair&lt;typename1, typename2&gt; p;</span><br><span class="line"><span class="comment">//初始化</span></span><br><span class="line">pair&lt;typename1, typename2&gt; p(a, b);  //a, b是想要初始化的元素</span><br></pre></td></tr></table></figure>
+<p>typename1, typename2可以是任何基本类型，也可以是STL标准容器</p>
+<p>如果只是想临时构建一个pair（通常可作为键值对插入map），可通过如下两种方法：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//直接跟在类型定义后面</span></span><br><span class="line">pair&lt;typename1, typename2&gt; (a, b);   <span class="comment">//a, b是想要初始化的元素</span></span><br><span class="line"><span class="comment">//make_pair函数</span></span><br><span class="line">make_pair(a, b);                     <span class="comment">//a, b是想要初始化的元素</span></span><br></pre></td></tr></table></figure>
+<h2 id="2-pair访问"><a href="#2-pair访问" class="headerlink" title="2. pair访问"></a>2. pair访问</h2><p>pair的结构相当于下面这个二元结构体：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//pair</span></span><br><span class="line">pair&lt;typename1, typename2&gt; p;</span><br><span class="line"><span class="comment">//等价二元结构体</span></span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">p</span> &#123;</span></span><br><span class="line">    typename1 first;</span><br><span class="line">    typename2 second;        </span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>pair中只有两个元素，分别是first, second，只需要按正常结构体的方式去访问即可</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">cout</span> &lt;&lt; p.first &lt;&lt; <span class="string">" "</span> &lt;&lt; p.second &lt;&lt; <span class="built_in">endl</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="3-pair用途"><a href="#3-pair用途" class="headerlink" title="3. pair用途"></a>3. pair用途</h2><p><strong>（1）代替二元结构体及其构造函数</strong></p>
+<p><strong>（2）作为map的键值对来进行插入</strong></p>
+<p>注：两个pair类型数据可以直接使用==, !=, &lt;, &lt;=, &gt;, &gt;=比较大小，比较规则是先以first的大小作为标准，只有当first相等时才去判别second的大小</p>
+<hr>
+<p>欢迎访问我的STL系列：</p>
+<p><strong>C++标准模板库(STL)用法介绍：目录</strong></p>
 
                 
                 <hr>
                 <!-- Pager -->
                 <ul class="pager">
                     
-                    <li class="previous">
-                        <a href="/2020/09/13/PAT-AdvancedLevel1023/" data-toggle="tooltip" data-placement="top" title="【个人代码及思路】PAT甲级：1023 Have Fun with Numbers (20分)">&larr; Previous Post</a>
-                    </li>
-                    
                     
                     <li class="next">
-                        <a href="/2020/09/07/PAT-AdvancedLevel1024/" data-toggle="tooltip" data-placement="top" title="【个人代码及思路】PAT甲级：1024 Palindromic Number (25分)">Next Post &rarr;</a>
+                        <a href="/2020/09/23/STL-stack/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：stack">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -442,7 +445,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Fri Sep 11 2020 21:29:27 GMT+0800', // optional
+    id: 'Wed Sep 23 2020 14:25:24 GMT+0800', // optional
     owner: "Colin-Jay",
     repo: "BlogsComment",
     oauth: {
@@ -482,7 +485,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：目录"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：目录</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-vector-向量（变长数组）"><span class="toc-nav-text">1. vector 向量（变长数组）</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-set-集合"><span class="toc-nav-text">2. set 集合</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-string-字符串"><span class="toc-nav-text">3. string 字符串</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-map-映射"><span class="toc-nav-text">4. map 映射</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-queue-队列"><span class="toc-nav-text">5. queue 队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#6-priority-queue-优先队列"><span class="toc-nav-text">6. priority_queue 优先队列</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#7-stack-栈"><span class="toc-nav-text">7. stack 栈</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#8-pair"><span class="toc-nav-text">8. pair</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：pair"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：pair</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-pair声明"><span class="toc-nav-text">1. pair声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-pair访问"><span class="toc-nav-text">2. pair访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-pair用途"><span class="toc-nav-text">3. pair用途</span></a></li></ol></li></ol>
             
           
           </div>

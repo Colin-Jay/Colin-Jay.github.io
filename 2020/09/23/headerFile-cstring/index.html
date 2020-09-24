@@ -16,11 +16,11 @@
     <!--<link href='http://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>-->
     <title>
         
-          【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：stack - Colin-Jay&#39;s Blogs
+          【C/C++全套入门攻略】常用头文件下的函数介绍：cstring/string.h - Colin-Jay&#39;s Blogs
         
     </title>
 
-    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/23/STL-stack/">
+    <link rel="canonical" href="https://Colin-Jay.cn/2020/09/23/headerFile-cstring/">
 
     <!-- Bootstrap Core CSS -->
     
@@ -117,7 +117,7 @@
                               <a class="tag" href="/tags/#C/C++" title="C/C++">C/C++</a>
                             
                         </div>
-                        <h1>【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：stack</h1>
+                        <h1>【C/C++全套入门攻略】常用头文件下的函数介绍：cstring/string.h</h1>
                         <h2 class="subheading"></h2>
                         <span class="meta">
                             Posted by Colin-Jay on
@@ -127,7 +127,7 @@
                         
                             <div class="blank_box"></div>
                             <span class="meta">
-                                Words <span class="post-count">352</span> and
+                                Words <span class="post-count">293</span> and
                                 Reading Time <span class="post-count">1</span> Minutes
                             </span>
                             <div class="blank_box"></div>
@@ -277,31 +277,19 @@
                 post-container">
 
                 <p>[TOC]</p>
-<h1 id="C-标准模板库-STL-用法介绍：stack"><a href="#C-标准模板库-STL-用法介绍：stack" class="headerlink" title="C++标准模板库(STL)用法介绍：stack"></a>C++标准模板库(STL)用法介绍：stack</h1><p>stack：栈，在STL中主要则是实现了一个后进先出的容器。</p>
-<p>使用stack前需要添加：</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;stack&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br></pre></td></tr></table></figure>
-<h2 id="1-stack声明"><a href="#1-stack声明" class="headerlink" title="1. stack声明"></a>1. stack声明</h2><p>stack是一个模板类，所以使用前需要声明。</p>
-<p><strong>声明</strong></p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">stack</span>&lt;<span class="keyword">typename</span>&gt; st;</span><br></pre></td></tr></table></figure>
-<p>typename可以是任何基本类型，也可以是STL标准容器</p>
-<h2 id="2-stack访问"><a href="#2-stack访问" class="headerlink" title="2. stack访问"></a>2. stack访问</h2><p>由于栈本身就是一种后进先出的限制性数据结构，因此在STL中只能通过top()来访问栈顶元素</p>
-<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">printf</span>(<span class="string">"%d"</span>, st.top());</span><br></pre></td></tr></table></figure>
-<h2 id="3-stack常用函数"><a href="#3-stack常用函数" class="headerlink" title="3. stack常用函数"></a>3. stack常用函数</h2><p><strong>(1) push()</strong></p>
-<p>st.push(x)用来将x送入栈</p>
-<p><strong>(2) top()</strong></p>
-<p>st.top()用来获得栈顶元素</p>
-<p><strong>(3) pop()</strong></p>
-<p>st.pop()用来令栈顶元素弹出</p>
-<p><strong>(4) empty()</strong></p>
-<p>st.empty()用来检测栈是否为空，空则返回true，否则返回false</p>
-<p>注：使用st.top()之前，必须用empty()判断栈是否为空，否则可能因为栈空出错</p>
-<p><strong>(5) size()</strong></p>
-<p>st.size()用来返回栈内元素的个数</p>
-<h2 id="4-stack用途"><a href="#4-stack用途" class="headerlink" title="4. stack用途"></a>4. stack用途</h2><p><strong>模拟实现一些递归</strong></p>
-<p>一般来说，程序的栈内存很小，如果递归程序的层数过深，容易导致程序崩溃。使用栈来模拟递归算法的实现，可以防止程序对栈内存的限制而导致运行出错（这种应用较少）</p>
+<h1 id="常用头文件下的函数介绍：cstring-string-h"><a href="#常用头文件下的函数介绍：cstring-string-h" class="headerlink" title="常用头文件下的函数介绍：cstring/string.h"></a>常用头文件下的函数介绍：cstring/string.h</h1><p>C语言提供了很多实用的关于字符数组的函数，如果要使用，需要在程序开头添加头文件cstring或者string.h。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//二者选一</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;cstring&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">&lt;string.h&gt;</span></span></span><br></pre></td></tr></table></figure>
+<h2 id="1-strlen"><a href="#1-strlen" class="headerlink" title="1. strlen()"></a>1. strlen()</h2><p>strlen(str)用于得到字符数组中第一个\0前的字符个数</p>
+<h2 id="2-strcmp"><a href="#2-strcmp" class="headerlink" title="2. strcmp()"></a>2. strcmp()</h2><p>strcmp(str1, str2)用于返回两个字符串大小的比较结果，比较原则是按字典序。</p>
+<p>若str1&lt;str2则返回一个负整数</p>
+<p>若str1=str2则返回0</p>
+<p>若str1&gt;str2则返回一个正整数</p>
+<h2 id="3-strcpy"><a href="#3-strcpy" class="headerlink" title="3. strcpy()"></a>3. strcpy()</h2><p>strcpy(str1, str2)用于将str2复制给str1，包括了结束符\0</p>
+<h2 id="4-strcat"><a href="#4-strcat" class="headerlink" title="4. strcat()"></a>4. strcat()</h2><p>strcat(str1, str2)用于str2接到str1后面</p>
+<h2 id="5-memset"><a href="#5-memset" class="headerlink" title="5. memset()"></a>5. memset()</h2><p>memset(a, num, sizeof(a))一般用来将数组（a是数组名）赋值为0或者-1。因为memset是按字节赋值的，0的二进制补码为全0，-1的二进制补码为全1，因此超过一个字节的数据类型只有赋值0，-1不容易出错。</p>
 <hr>
-<p>欢迎访问我的STL系列：</p>
-<p><a href="https://colin-jay.cn/2020/09/11/STL-Catalog/"><strong>C++标准模板库(STL)用法介绍：目录</strong></a></p>
+<p>欢迎访问我的常用头文件下的函数介绍系列：</p>
+<p>常用头文件下的函数介绍：目录</p>
 
                 
                 <hr>
@@ -309,12 +297,12 @@
                 <ul class="pager">
                     
                     <li class="previous">
-                        <a href="/2020/09/23/STL-pair/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：pair">&larr; Previous Post</a>
+                        <a href="/2020/09/23/headerFile-Catalog/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】常用头文件下的函数介绍：目录">&larr; Previous Post</a>
                     </li>
                     
                     
                     <li class="next">
-                        <a href="/2020/09/23/STL-priority-queue/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】C++标准模板库(STL)用法介绍：priority_queue">Next Post &rarr;</a>
+                        <a href="/2020/09/23/headerFile-cmath/" data-toggle="tooltip" data-placement="top" title="【C/C++全套入门攻略】常用头文件下的函数介绍：cmath/math.h">Next Post &rarr;</a>
                     </li>
                     
                 </ul>
@@ -455,7 +443,7 @@ const myTheme = {
 
 
 const gitment = new Gitment({
-    id: 'Wed Sep 23 2020 13:17:38 GMT+0800', // optional
+    id: 'Wed Sep 23 2020 16:59:52 GMT+0800', // optional
     owner: "Colin-Jay",
     repo: "BlogsComment",
     oauth: {
@@ -495,7 +483,7 @@ const gitment = new Gitment({
           <strong class="toc-title">Contents</strong>
           
             
-              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#C-标准模板库-STL-用法介绍：stack"><span class="toc-nav-text">C++标准模板库(STL)用法介绍：stack</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-stack声明"><span class="toc-nav-text">1. stack声明</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-stack访问"><span class="toc-nav-text">2. stack访问</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-stack常用函数"><span class="toc-nav-text">3. stack常用函数</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-stack用途"><span class="toc-nav-text">4. stack用途</span></a></li></ol></li></ol>
+              <ol class="toc-nav"><li class="toc-nav-item toc-nav-level-1"><a class="toc-nav-link" href="#常用头文件下的函数介绍：cstring-string-h"><span class="toc-nav-text">常用头文件下的函数介绍：cstring&#x2F;string.h</span></a><ol class="toc-nav-child"><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#1-strlen"><span class="toc-nav-text">1. strlen()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#2-strcmp"><span class="toc-nav-text">2. strcmp()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#3-strcpy"><span class="toc-nav-text">3. strcpy()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#4-strcat"><span class="toc-nav-text">4. strcat()</span></a></li><li class="toc-nav-item toc-nav-level-2"><a class="toc-nav-link" href="#5-memset"><span class="toc-nav-text">5. memset()</span></a></li></ol></li></ol>
             
           
           </div>
